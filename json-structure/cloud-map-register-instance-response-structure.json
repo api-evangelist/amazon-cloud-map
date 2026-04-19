@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-register-instance-response-structure.json",
+  "name": "RegisterInstanceResponse",
+  "description": "Response for registering an instance.",
+  "type": "object",
+  "properties": {
+    "OperationId": {
+      "type": "string",
+      "description": "A value that you can use to determine whether the request completed successfully.",
+      "example": "op-abc12345"
+    }
+  }
+}

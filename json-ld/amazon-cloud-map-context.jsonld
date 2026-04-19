@@ -1,0 +1,107 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "cloudmap": "https://aws.amazon.com/cloud-map/schema/",
+    "schema": "https://schema.org/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "Namespace": "cloudmap:Namespace",
+    "id": {
+      "@id": "cloudmap:id",
+      "@type": "xsd:string"
+    },
+    "arn": {
+      "@id": "cloudmap:arn",
+      "@type": "xsd:string"
+    },
+    "name": "schema:name",
+    "type": {
+      "@id": "cloudmap:type",
+      "@type": "xsd:string"
+    },
+    "description": "schema:description",
+    "createDate": {
+      "@id": "cloudmap:create_date",
+      "@type": "xsd:dateTime"
+    },
+    "Service": "cloudmap:Service",
+    "namespaceId": {
+      "@id": "cloudmap:namespace_id",
+      "@type": "xsd:string"
+    },
+    "instanceCount": {
+      "@id": "cloudmap:instance_count",
+      "@type": "xsd:integer"
+    },
+    "Instance": "cloudmap:Instance",
+    "attributes": {
+      "@id": "cloudmap:attributes",
+      "@type": "xsd:string"
+    },
+    "HttpInstanceSummary": "cloudmap:HttpInstanceSummary",
+    "instanceId": {
+      "@id": "cloudmap:instance_id",
+      "@type": "xsd:string"
+    },
+    "namespaceName": {
+      "@id": "cloudmap:namespace_name",
+      "@type": "xsd:string"
+    },
+    "serviceName": {
+      "@id": "cloudmap:service_name",
+      "@type": "xsd:string"
+    },
+    "healthStatus": {
+      "@id": "cloudmap:health_status",
+      "@type": "xsd:string"
+    },
+    "ListNamespacesResponse": "cloudmap:ListNamespacesResponse",
+    "namespaces": {
+      "@id": "cloudmap:namespaces",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "nextToken": {
+      "@id": "cloudmap:next_token",
+      "@type": "xsd:string"
+    },
+    "ListServicesResponse": "cloudmap:ListServicesResponse",
+    "services": {
+      "@id": "cloudmap:services",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "CreateServiceRequest": "cloudmap:CreateServiceRequest",
+    "dnsConfig": {
+      "@id": "cloudmap:dns_config",
+      "@type": "xsd:string"
+    },
+    "creatorRequestId": {
+      "@id": "cloudmap:creator_request_id",
+      "@type": "xsd:string"
+    },
+    "CreateServiceResponse": "cloudmap:CreateServiceResponse",
+    "service": {
+      "@id": "cloudmap:service",
+      "@type": "xsd:string"
+    },
+    "ListInstancesResponse": "cloudmap:ListInstancesResponse",
+    "instances": {
+      "@id": "cloudmap:instances",
+      "@container": "@set",
+      "@type": "xsd:string"
+    },
+    "RegisterInstanceRequest": "cloudmap:RegisterInstanceRequest",
+    "RegisterInstanceResponse": "cloudmap:RegisterInstanceResponse",
+    "operationId": {
+      "@id": "cloudmap:operation_id",
+      "@type": "xsd:string"
+    },
+    "DiscoverInstancesRequest": "cloudmap:DiscoverInstancesRequest",
+    "maxResults": {
+      "@id": "cloudmap:max_results",
+      "@type": "xsd:integer"
+    },
+    "DiscoverInstancesResponse": "cloudmap:DiscoverInstancesResponse"
+  }
+}

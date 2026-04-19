@@ -1,0 +1,131 @@
+vocabulary: "1.0.0"
+
+info:
+  provider: "Amazon Cloud Map"
+  description: "Vocabulary for Amazon Cloud Map service discovery APIs covering namespaces, services, instances, and discovery operations."
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+operational:
+  apis:
+    - name: Amazon Cloud Map API
+      namespace: cloudmap
+      version: "2017-03-14"
+      baseUrl: https://servicediscovery.us-east-1.amazonaws.com
+      status: active
+
+  resources:
+    - name: namespaces
+      description: "Service discovery namespaces (DNS or HTTP)"
+      api: cloudmap
+      actions: [list, create, get, delete, update]
+    - name: services
+      description: "Named services registered within a namespace"
+      api: cloudmap
+      actions: [list, create, get, delete, update]
+    - name: instances
+      description: "Service instance registrations with health status"
+      api: cloudmap
+      actions: [list, register, deregister, discover]
+
+  actions:
+    - name: list
+      description: "List resources with pagination"
+      httpMethod: GET
+      pattern: read
+    - name: create
+      description: "Create a new resource"
+      httpMethod: POST
+      pattern: write
+    - name: register
+      description: "Register an instance with a service"
+      httpMethod: POST
+      pattern: write
+    - name: discover
+      description: "Discover healthy instances matching criteria"
+      httpMethod: POST
+      pattern: read
+
+  schemas:
+    core:
+      - name: Namespace
+        description: "Service discovery namespace"
+        keyProperties: [Id, Arn, Name, Type]
+      - name: Service
+        description: "Named service for discovery"
+        keyProperties: [Id, Arn, Name, NamespaceId]
+      - name: Instance
+        description: "Service instance registration"
+        keyProperties: [Id, Attributes]
+      - name: HttpInstanceSummary
+        description: "Discovered instance summary"
+        keyProperties: [InstanceId, NamespaceName, ServiceName, HealthStatus]
+
+  enums:
+    namespaceTypes:
+      - DNS_PUBLIC
+      - DNS_PRIVATE
+      - HTTP
+    healthStatus:
+      - HEALTHY
+      - UNHEALTHY
+      - UNKNOWN
+      - ALL
+      - HEALTHY_OR_ELSE_ALL
+
+  authentication:
+    schemes:
+      - type: AWS Signature Version 4
+        apis: [cloudmap]
+
+capability:
+  workflows:
+    - name: Service Discovery
+      file: capabilities/service-discovery.yaml
+      description: "Dynamic microservice registration and discovery"
+      apisConsumed: [cloudmap]
+      toolCount: 6
+      personas: [Platform Engineer, DevOps Engineer]
+
+  personas:
+    - id: platform-engineer
+      name: Platform Engineer
+      description: "Engineers managing service registries and microservice infrastructure"
+      workflows: [Service Discovery]
+    - id: devops-engineer
+      name: DevOps Engineer
+      description: "DevOps practitioners automating service registration and health monitoring"
+      workflows: [Service Discovery]
+
+  domains:
+    - name: Service Discovery
+      description: "Dynamic service registry and health-based routing"
+      resources: [namespaces, services, instances]
+      workflows: [Service Discovery]
+
+  namespaces:
+    - name: cloudmap
+      type: consumed
+      baseUri: https://servicediscovery.us-east-1.amazonaws.com
+    - name: service-discovery-api
+      type: rest-exposed
+      port: 8080
+    - name: service-discovery-mcp
+      type: mcp-exposed
+      port: 9090
+
+  binds:
+    - name: AWS_ACCESS_KEY_ID
+      workflows: [Service Discovery]
+    - name: AWS_SECRET_ACCESS_KEY
+      workflows: [Service Discovery]
+
+crossReference:
+  - resource: services
+    operations: [ListServices, CreateService]
+    workflows: [Service Discovery]
+    personas: [Platform Engineer, DevOps Engineer]
+  - resource: instances
+    operations: [ListInstances, RegisterInstance, DiscoverInstances]
+    workflows: [Service Discovery]
+    personas: [Platform Engineer, DevOps Engineer]

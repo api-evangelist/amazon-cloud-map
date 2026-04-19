@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-create-service-response-structure.json",
+  "name": "CreateServiceResponse",
+  "description": "Response for creating a service.",
+  "type": "object",
+  "properties": {
+    "Service": {
+      "$ref": "#/components/schemas/Service"
+    }
+  }
+}

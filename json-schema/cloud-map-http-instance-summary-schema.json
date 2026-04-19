@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-schema/cloud-map-http-instance-summary-schema.json",
+  "title": "HttpInstanceSummary",
+  "description": "Represents a summary of a discovered service instance.",
+  "type": "object",
+  "properties": {
+    "InstanceId": {
+      "type": "string",
+      "description": "The ID of an instance.",
+      "example": "i-1234567890abcdef0"
+    },
+    "NamespaceName": {
+      "type": "string",
+      "description": "The HttpName name of the namespace.",
+      "example": "production.internal"
+    },
+    "ServiceName": {
+      "type": "string",
+      "description": "The name of the service.",
+      "example": "payment-service"
+    },
+    "HealthStatus": {
+      "type": "string",
+      "enum": [
+        "HEALTHY",
+        "UNHEALTHY",
+        "UNKNOWN"
+      ],
+      "description": "If you configured health checking in the service, the current health status of the service's instances."
+    },
+    "Attributes": {
+      "type": "object",
+      "description": "Custom attributes associated with the instance."
+    }
+  }
+}

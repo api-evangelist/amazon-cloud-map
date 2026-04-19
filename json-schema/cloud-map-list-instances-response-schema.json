@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-schema/cloud-map-list-instances-response-schema.json",
+  "title": "ListInstancesResponse",
+  "description": "Response for listing instances.",
+  "type": "object",
+  "properties": {
+    "Instances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Instance"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

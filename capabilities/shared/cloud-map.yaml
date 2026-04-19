@@ -1,0 +1,243 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "Amazon Cloud Map"
+  description: "Amazon Cloud Map API for service discovery — managing namespaces, services, and instances with integrated health checking."
+  tags:
+    - Amazon Web Services
+    - Cloud Map
+    - Service Discovery
+    - Microservices
+  created: "2026-04-19"
+  modified: "2026-04-19"
+
+binds:
+  - namespace: env
+    keys:
+      AWS_ACCESS_KEY_ID: AWS_ACCESS_KEY_ID
+      AWS_SECRET_ACCESS_KEY: AWS_SECRET_ACCESS_KEY
+      AWS_REGION: AWS_REGION
+
+capability:
+  consumes:
+    - type: http
+      namespace: cloudmap
+      baseUri: https://servicediscovery.us-east-1.amazonaws.com
+      description: "Amazon Cloud Map service discovery API."
+      authentication:
+        type: apikey
+        key: Authorization
+        value: "{{AWS_ACCESS_KEY_ID}}"
+        placement: header
+      resources:
+        - name: namespaces
+          path: /namespaces
+          description: "Service discovery namespaces"
+          operations:
+            - name: list-namespaces
+              method: GET
+              description: "List all Cloud Map namespaces"
+              inputParameters:
+                - name: NextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+                - name: MaxResults
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Maximum results"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+        - name: services
+          path: /services
+          description: "Service discovery services"
+          operations:
+            - name: list-services
+              method: GET
+              description: "List services in a namespace"
+              inputParameters:
+                - name: NextToken
+                  in: query
+                  type: string
+                  required: false
+                  description: "Pagination token"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: create-service
+              method: POST
+              description: "Create a service for service discovery"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  Name: "{{tools.name}}"
+                  NamespaceId: "{{tools.namespace_id}}"
+        - name: instances
+          path: /services/{ServiceId}/instances
+          description: "Service instances"
+          operations:
+            - name: list-instances
+              method: GET
+              description: "List instances in a service"
+              inputParameters:
+                - name: ServiceId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Service ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+            - name: register-instance
+              method: POST
+              description: "Register an instance with a service"
+              inputParameters:
+                - name: ServiceId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Service ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  InstanceId: "{{tools.instance_id}}"
+                  Attributes:
+                    AWS_INSTANCE_IPV4: "{{tools.ip}}"
+        - name: discover-instances
+          path: /instances/discover
+          description: "Instance discovery"
+          operations:
+            - name: discover-instances
+              method: POST
+              description: "Discover registered instances for a service"
+              inputParameters: []
+              outputRawFormat: json
+              outputParameters:
+                - name: result
+                  type: object
+                  value: "$."
+              body:
+                type: json
+                data:
+                  NamespaceName: "{{tools.namespace_name}}"
+                  ServiceName: "{{tools.service_name}}"
+                  HealthStatus: "HEALTHY"
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: cloudmap-rest
+      resources:
+        - path: /v1/namespaces
+          name: namespaces
+          description: "List Cloud Map namespaces"
+          operations:
+            - method: GET
+              name: list-namespaces
+              description: "List namespaces"
+              call: "cloudmap.list-namespaces"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/services
+          name: services
+          description: "Manage Cloud Map services"
+          operations:
+            - method: GET
+              name: list-services
+              description: "List services"
+              call: "cloudmap.list-services"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: cloudmap-mcp
+      transport: http
+      tools:
+        - name: list-namespaces
+          description: "List all Cloud Map service discovery namespaces"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cloudmap.list-namespaces"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-services
+          description: "List services registered in Cloud Map"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cloudmap.list-services"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: create-service
+          description: "Create a new Cloud Map service for service discovery"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cloudmap.create-service"
+          with:
+            Name: "tools.name"
+            NamespaceId: "tools.namespace_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: discover-instances
+          description: "Discover healthy instances of a service by namespace and service name"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cloudmap.discover-instances"
+          with:
+            NamespaceName: "tools.namespace_name"
+            ServiceName: "tools.service_name"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: register-instance
+          description: "Register a new instance with a Cloud Map service"
+          hints:
+            readOnly: false
+            idempotent: false
+          call: "cloudmap.register-instance"
+          with:
+            ServiceId: "tools.service_id"
+            InstanceId: "tools.instance_id"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: list-instances
+          description: "List instances registered with a Cloud Map service"
+          hints:
+            readOnly: true
+            idempotent: true
+          call: "cloudmap.list-instances"
+          with:
+            ServiceId: "tools.service_id"
+          outputParameters:
+            - type: object
+              mapping: "$."

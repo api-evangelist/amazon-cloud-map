@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-schema/cloud-map-namespace-schema.json",
+  "title": "Namespace",
+  "description": "Represents a Cloud Map namespace for service discovery.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The ID of the namespace.",
+      "example": "ns-abc12345"
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the namespace."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The name of the namespace.",
+      "example": "production.internal"
+    },
+    "Type": {
+      "type": "string",
+      "enum": [
+        "DNS_PUBLIC",
+        "DNS_PRIVATE",
+        "HTTP"
+      ],
+      "description": "The type of the namespace."
+    },
+    "Description": {
+      "type": "string",
+      "description": "The description of the namespace."
+    },
+    "CreateDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time that the namespace was created."
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-schema/cloud-map-register-instance-request-schema.json",
+  "title": "RegisterInstanceRequest",
+  "description": "Request body for registering an instance.",
+  "type": "object",
+  "properties": {
+    "InstanceId": {
+      "type": "string",
+      "description": "An identifier that you want to associate with the instance.",
+      "example": "i-1234567890abcdef0"
+    },
+    "CreatorRequestId": {
+      "type": "string",
+      "description": "A unique string that identifies the request and allows failed RegisterInstance requests to be retried."
+    },
+    "Attributes": {
+      "type": "object",
+      "description": "A string map that contains the following information, including custom attributes."
+    }
+  },
+  "required": [
+    "InstanceId",
+    "Attributes"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "Name": "payment-service",
+  "NamespaceId": "svc-abc12345",
+  "Description": "example-value",
+  "DnsConfig": {},
+  "CreatorRequestId": "svc-abc12345"
+}

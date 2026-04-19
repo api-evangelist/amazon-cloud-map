@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-list-instances-response-structure.json",
+  "name": "ListInstancesResponse",
+  "description": "Response for listing instances.",
+  "type": "object",
+  "properties": {
+    "Instances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Instance"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

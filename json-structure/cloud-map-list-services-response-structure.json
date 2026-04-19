@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-list-services-response-structure.json",
+  "name": "ListServicesResponse",
+  "description": "Response for listing services.",
+  "type": "object",
+  "properties": {
+    "Services": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Service"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

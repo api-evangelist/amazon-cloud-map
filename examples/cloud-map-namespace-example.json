@@ -1,0 +1,8 @@
+{
+  "Id": "svc-abc12345",
+  "Arn": "arn:aws:servicediscovery:us-east-1:123456789012:service/svc-abc12345",
+  "Name": "payment-service",
+  "Type": "DNS_PUBLIC",
+  "Description": "example-value",
+  "CreateDate": "2025-03-15T14:30:00Z"
+}

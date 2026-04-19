@@ -1,0 +1,7 @@
+{
+  "InstanceId": "svc-abc12345",
+  "NamespaceName": "payment-service",
+  "ServiceName": "payment-service",
+  "HealthStatus": "HEALTHY",
+  "Attributes": {}
+}

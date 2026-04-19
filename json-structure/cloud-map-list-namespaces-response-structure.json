@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-list-namespaces-response-structure.json",
+  "name": "ListNamespacesResponse",
+  "description": "Response for listing namespaces.",
+  "type": "object",
+  "properties": {
+    "Namespaces": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Namespace"
+      }
+    },
+    "NextToken": {
+      "type": "string"
+    }
+  }
+}

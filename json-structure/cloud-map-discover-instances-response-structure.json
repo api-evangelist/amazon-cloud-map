@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-discover-instances-response-structure.json",
+  "name": "DiscoverInstancesResponse",
+  "description": "Response for discovering instances.",
+  "type": "object",
+  "properties": {
+    "Instances": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/HttpInstanceSummary"
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-discover-instances-request-structure.json",
+  "name": "DiscoverInstancesRequest",
+  "description": "Request body for discovering instances.",
+  "type": "object",
+  "properties": {
+    "NamespaceName": {
+      "type": "string",
+      "description": "The HttpName name of the namespace.",
+      "example": "production.internal"
+    },
+    "ServiceName": {
+      "type": "string",
+      "description": "The name of the service that you specified when you registered the instance.",
+      "example": "payment-service"
+    },
+    "MaxResults": {
+      "type": "int32",
+      "description": "The maximum number of instances that you want Cloud Map to return."
+    },
+    "HealthStatus": {
+      "type": "string",
+      "enum": [
+        "HEALTHY",
+        "UNHEALTHY",
+        "ALL",
+        "HEALTHY_OR_ELSE_ALL"
+      ],
+      "description": "The health status of the instances that you want to discover."
+    }
+  }
+}

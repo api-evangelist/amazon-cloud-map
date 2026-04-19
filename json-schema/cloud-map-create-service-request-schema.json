@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-schema/cloud-map-create-service-request-schema.json",
+  "title": "CreateServiceRequest",
+  "description": "Request body for creating a service.",
+  "type": "object",
+  "properties": {
+    "Name": {
+      "type": "string",
+      "description": "The name that you want to assign to the service.",
+      "example": "payment-service"
+    },
+    "NamespaceId": {
+      "type": "string",
+      "description": "The ID of the namespace that you want to use to create the service."
+    },
+    "Description": {
+      "type": "string",
+      "description": "A description for the service."
+    },
+    "DnsConfig": {
+      "type": "object",
+      "description": "A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance."
+    },
+    "CreatorRequestId": {
+      "type": "string",
+      "description": "A unique string that identifies the request and allows failed CreateService requests to be retried."
+    }
+  },
+  "required": [
+    "Name"
+  ]
+}

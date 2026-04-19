@@ -1,0 +1,6 @@
+{
+  "NamespaceName": "payment-service",
+  "ServiceName": "payment-service",
+  "MaxResults": 10,
+  "HealthStatus": "HEALTHY"
+}

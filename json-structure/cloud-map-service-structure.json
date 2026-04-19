@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0/#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/json-structure/cloud-map-service-structure.json",
+  "name": "Service",
+  "description": "Represents a Cloud Map service used for service discovery.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The ID of the service.",
+      "example": "svc-abc12345"
+    },
+    "Arn": {
+      "type": "string",
+      "description": "The Amazon Resource Name (ARN) of the service."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The name of the service.",
+      "example": "payment-service"
+    },
+    "NamespaceId": {
+      "type": "string",
+      "description": "The ID of the namespace."
+    },
+    "Description": {
+      "type": "string",
+      "description": "The description of the service."
+    },
+    "InstanceCount": {
+      "type": "int32",
+      "description": "The number of instances that are currently associated with the service."
+    }
+  }
+}
