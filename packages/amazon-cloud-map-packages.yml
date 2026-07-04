@@ -1,0 +1,65 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  AWS Cloud Map is accessed through the AWS SDKs and AWS CLI. Cloud Map is the
+  "servicediscovery" service in the AWS SDK family. Each package below was probed
+  on its public registry (HTTP 200) on 2026-06-20.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@aws-sdk/client-servicediscovery"
+    version: 3.1079.0
+    url: https://www.npmjs.com/package/@aws-sdk/client-servicediscovery
+    install: npm install @aws-sdk/client-servicediscovery
+    official: true
+    note: AWS SDK for JavaScript v3 modular Cloud Map (ServiceDiscovery) client.
+  - language: python
+    registry: pypi
+    name: boto3
+    url: https://pypi.org/project/boto3/
+    install: pip install boto3
+    official: true
+    note: AWS SDK for Python; Cloud Map via boto3.client('servicediscovery').
+  - language: java
+    registry: maven
+    name: software.amazon.awssdk:servicediscovery
+    url: https://repo1.maven.org/maven2/software/amazon/awssdk/servicediscovery/
+    install: "implementation 'software.amazon.awssdk:servicediscovery'"
+    official: true
+    note: AWS SDK for Java 2.x ServiceDiscovery (Cloud Map) module.
+  - language: dotnet
+    registry: nuget
+    name: AWSSDK.ServiceDiscovery
+    url: https://www.nuget.org/packages/AWSSDK.ServiceDiscovery/
+    install: dotnet add package AWSSDK.ServiceDiscovery
+    official: true
+    note: AWS SDK for .NET Cloud Map (ServiceDiscovery) client.
+  - language: go
+    registry: pkg.go.dev
+    name: github.com/aws/aws-sdk-go-v2/service/servicediscovery
+    url: https://pkg.go.dev/github.com/aws/aws-sdk-go-v2/service/servicediscovery
+    install: go get github.com/aws/aws-sdk-go-v2/service/servicediscovery
+    official: true
+    note: AWS SDK for Go v2 ServiceDiscovery (Cloud Map) client.
+  - language: ruby
+    registry: rubygems
+    name: aws-sdk-servicediscovery
+    version: 1.102.0
+    url: https://rubygems.org/gems/aws-sdk-servicediscovery
+    install: gem install aws-sdk-servicediscovery
+    official: true
+    note: AWS SDK for Ruby Cloud Map (ServiceDiscovery) client.
+  - language: php
+    registry: packagist
+    name: aws/aws-sdk-php
+    url: https://packagist.org/packages/aws/aws-sdk-php
+    install: composer require aws/aws-sdk-php
+    official: true
+    note: AWS SDK for PHP; Cloud Map via the ServiceDiscovery client.
+  - language: rust
+    registry: crates.io
+    name: aws-sdk-servicediscovery
+    url: https://crates.io/crates/aws-sdk-servicediscovery
+    install: cargo add aws-sdk-servicediscovery
+    official: true
+    note: AWS SDK for Rust ServiceDiscovery (Cloud Map) client.

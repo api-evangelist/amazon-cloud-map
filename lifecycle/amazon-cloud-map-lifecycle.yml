@@ -1,0 +1,27 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Versioning derived from the OpenAPI info.version / AWS API date-stamp model;
+  SLA and status references from AWS public pages probed 2026-06-20.
+versioning:
+  scheme: api-version-date
+  current: '2017-03-14'
+  note: >-
+    AWS Cloud Map (servicediscovery) uses the AWS-wide dated API version model.
+    Regional endpoints are versioned by the service API date, not a URI path
+    version; SDK/CLI abstract the version. New capabilities are added additively.
+  docs: https://docs.aws.amazon.com/cloud-map/latest/api/
+deprecation:
+  policy_url: https://docs.aws.amazon.com/general/latest/gr/aws-service-deprecation.html
+  sunset_header: false
+  note: >-
+    AWS communicates deprecations and end-of-support via service documentation,
+    the AWS Health Dashboard, and account notifications rather than RFC 8594
+    Sunset/Deprecation HTTP headers.
+sla:
+  url: https://aws.amazon.com/cloud-map/
+  note: >-
+    AWS Cloud Map is covered by the AWS Cloud Map component of the AWS service
+    terms; no standalone published uptime-percentage SLA document was located.
+status_page: https://health.aws.amazon.com/health/status
+deprecated_operations: []

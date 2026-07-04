@@ -14,7 +14,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-19'
+modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
 - name: Amazon Cloud Map API
@@ -46,6 +46,12 @@ apis:
     url: json-schema/cloud-map-service-schema.json
   - type: JSONLD
     url: json-ld/amazon-cloud-map-context.jsonld
+  - type: Overlay
+    url: overlays/amazon-cloud-map-openapi-overlay.yaml
+  - type: MCPServer
+    url: mcp/amazon-cloud-map-mcp.yml
+  - type: ErrorCatalog
+    url: errors/amazon-cloud-map-problem-types.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -84,6 +90,18 @@ common:
   url: vocabulary/amazon-cloud-map-vocabulary.yaml
 - type: NaftikoCapability
   url: capabilities/service-discovery.yaml
+- type: Packages
+  url: packages/amazon-cloud-map-packages.yml
+- type: WellKnown
+  url: well-known/amazon-cloud-map-well-known.yml
+- type: SecurityTxt
+  url: well-known/amazon-cloud-map-security.txt
+- type: LLMsTxt
+  url: llms/amazon-cloud-map-llms.txt
+- type: Conformance
+  url: conformance/amazon-cloud-map-conformance.yml
+- type: Lifecycle
+  url: lifecycle/amazon-cloud-map-lifecycle.yml
 - type: Features
   data:
   - name: Service Registry

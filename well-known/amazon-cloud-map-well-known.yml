@@ -1,0 +1,46 @@
+generated: '2026-06-20'
+method: searched
+source: >-
+  Probed the /.well-known/ discovery surface on the API base host and the two
+  AWS web hosts referenced in apis.yml on 2026-06-20.
+hosts:
+  - host: https://servicediscovery.us-east-1.amazonaws.com
+    note: API base host (regional Cloud Map / ServiceDiscovery endpoint).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://aws.amazon.com
+    note: Corporate/portal host.
+    documents:
+      - path: /.well-known/security.txt
+        status: 200
+        file: amazon-cloud-map-security.txt
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404
+  - host: https://docs.aws.amazon.com
+    note: Documentation host (also serves llms.txt, captured under llms/).
+    documents:
+      - path: /.well-known/security.txt
+        status: 404
+      - path: /.well-known/openid-configuration
+        status: 404
+      - path: /.well-known/oauth-authorization-server
+        status: 404
+      - path: /.well-known/api-catalog
+        status: 404
+      - path: /.well-known/ai-plugin.json
+        status: 404

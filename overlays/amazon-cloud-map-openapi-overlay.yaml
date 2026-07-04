@@ -1,0 +1,32 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for Amazon Cloud Map API
+  version: 1.0.0
+extends: openapi/amazon-cloud-map-openapi.yml
+actions:
+  - target: $.info
+    update:
+      x-apievangelist-slug: amazon-cloud-map
+      x-apievangelist-index: https://apis.io/providers/amazon-cloud-map/
+      x-apievangelist-category: service-discovery
+      x-apievangelist-provider: Amazon Web Services
+  - target: $.info
+    update:
+      x-artifacts:
+        packages: packages/amazon-cloud-map-packages.yml
+        llms: llms/amazon-cloud-map-llms.txt
+        conformance: conformance/amazon-cloud-map-conformance.yml
+        errors: errors/amazon-cloud-map-problem-types.yml
+        lifecycle: lifecycle/amazon-cloud-map-lifecycle.yml
+        mcp: mcp/amazon-cloud-map-mcp.yml
+        well_known: well-known/amazon-cloud-map-well-known.yml
+  - target: $.tags
+    update:
+      - name: Namespaces
+        description: Operations for managing service discovery namespaces
+        x-apievangelist-note: DNS_PUBLIC, DNS_PRIVATE, and HTTP namespace types.
+  - target: "$.paths['/instances/discover'].post"
+    update:
+      x-apievangelist-note: >-
+        Primary read-path for service consumers; DiscoverInstances is the
+        low-latency lookup used by clients at request time.

@@ -1,0 +1,47 @@
+generated: '2026-06-20'
+method: derived
+format: aws-json
+source: >-
+  Derived from the 4xx/5xx responses in openapi/amazon-cloud-map-openapi.yml and
+  enriched from the AWS Cloud Map API Reference "Common Error Types"
+  (https://docs.aws.amazon.com/cloud-map/latest/api/CommonErrors.md). Cloud Map
+  does not emit RFC 9457 application/problem+json; errors are AWS JSON with a
+  Message field and an X-Amzn-ErrorType header.
+problems:
+  - status: 400
+    code: InvalidInput
+    title: One or more specified values aren't valid.
+    schema: openapi/amazon-cloud-map-openapi.yml#/components/schemas/InvalidInput
+    remediation: Check request parameter values and types against the API reference.
+    source_operations:
+      - openapi/amazon-cloud-map-openapi.yml#ListNamespaces
+      - openapi/amazon-cloud-map-openapi.yml#ListServices
+      - openapi/amazon-cloud-map-openapi.yml#CreateService
+      - openapi/amazon-cloud-map-openapi.yml#ListInstances
+      - openapi/amazon-cloud-map-openapi.yml#RegisterInstance
+      - openapi/amazon-cloud-map-openapi.yml#DiscoverInstances
+  - status: 404
+    code: ServiceNotFound
+    title: No service exists with the specified ID.
+    schema: openapi/amazon-cloud-map-openapi.yml#/components/schemas/ServiceNotFound
+    remediation: Verify the ServiceId exists (via ListServices) and the caller has access.
+    source_operations:
+      - openapi/amazon-cloud-map-openapi.yml#ListInstances
+  - status: 500
+    code: InternalServiceError
+    title: One or more required elements are missing or one or more elements are wrong.
+    schema: openapi/amazon-cloud-map-openapi.yml#/components/schemas/InternalServiceError
+    remediation: Retry with exponential backoff; if it persists, contact AWS Support.
+    source_operations:
+      - openapi/amazon-cloud-map-openapi.yml#ListNamespaces
+      - openapi/amazon-cloud-map-openapi.yml#ListServices
+      - openapi/amazon-cloud-map-openapi.yml#CreateService
+      - openapi/amazon-cloud-map-openapi.yml#ListInstances
+      - openapi/amazon-cloud-map-openapi.yml#RegisterInstance
+      - openapi/amazon-cloud-map-openapi.yml#DiscoverInstances
+common_error_types:
+  reference: https://docs.aws.amazon.com/cloud-map/latest/api/CommonErrors.md
+  note: >-
+    Cloud Map also returns the AWS common client errors (AccessDeniedException,
+    IncompleteSignature, InvalidAction, InvalidClientTokenId, ThrottlingException,
+    ValidationException, etc.), signalled via the X-Amzn-ErrorType response header.
