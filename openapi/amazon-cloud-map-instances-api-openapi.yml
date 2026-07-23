@@ -1,0 +1,336 @@
+openapi: 3.1.0
+info:
+  title: Amazon Cloud Map Instances API
+  description: Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.
+  version: '2017-03-14'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+servers:
+- url: https://servicediscovery.{region}.amazonaws.com
+  description: Amazon Cloud Map Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature: []
+tags:
+- name: Instances
+  description: Operations for registering and discovering service instances
+paths:
+  /services/{ServiceId}/instances:
+    get:
+      operationId: ListInstances
+      summary: Amazon Cloud Map List Instances
+      description: Lists summary information about the instances that you registered by using a specified service.
+      tags:
+      - Instances
+      parameters:
+      - name: ServiceId
+        in: path
+        required: true
+        description: The ID of the service that you want to list instances for.
+        schema:
+          type: string
+      - name: NextToken
+        in: query
+        description: For the first ListInstances request, omit this value.
+        schema:
+          type: string
+      - name: MaxResults
+        in: query
+        description: The maximum number of instances that you want AWS Cloud Map to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListInstancesResponse'
+              examples:
+                ListInstances200Example:
+                  summary: Default ListInstances 200 response
+                  x-microcks-default: true
+                  value:
+                    Instances:
+                    - Id: instance-abc12345
+                      Attributes:
+                        AWS_INSTANCE_IPV4: 10.0.0.1
+                        AWS_INSTANCE_PORT: '8080'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInput'
+        '404':
+          description: Service not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceNotFound'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: RegisterInstance
+      summary: Amazon Cloud Map Register an Instance
+      description: Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service.
+      tags:
+      - Instances
+      parameters:
+      - name: ServiceId
+        in: path
+        required: true
+        description: The ID of the service that you want to use for settings for the instance.
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterInstanceRequest'
+            examples:
+              RegisterInstanceRequestExample:
+                summary: Default RegisterInstance request
+                x-microcks-default: true
+                value:
+                  InstanceId: i-1234567890abcdef0
+                  Attributes:
+                    AWS_INSTANCE_IPV4: 10.0.0.1
+                    AWS_INSTANCE_PORT: '8080'
+                  CreatorRequestId: req-abc123
+      responses:
+        '200':
+          description: Instance registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RegisterInstanceResponse'
+              examples:
+                RegisterInstance200Example:
+                  summary: Default RegisterInstance 200 response
+                  x-microcks-default: true
+                  value:
+                    OperationId: op-abc12345
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInput'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+  /instances/discover:
+    post:
+      operationId: DiscoverInstances
+      summary: Amazon Cloud Map Discover Instances
+      description: Discovers registered instances for a specified namespace and service. You can use Cloud Map DiscoverInstances to discover instances for any type of namespace.
+      tags:
+      - Instances
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DiscoverInstancesRequest'
+            examples:
+              DiscoverInstancesRequestExample:
+                summary: Default DiscoverInstances request
+                x-microcks-default: true
+                value:
+                  NamespaceName: production.internal
+                  ServiceName: payment-service
+                  MaxResults: 10
+                  HealthStatus: HEALTHY
+      responses:
+        '200':
+          description: Instances discovered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DiscoverInstancesResponse'
+              examples:
+                DiscoverInstances200Example:
+                  summary: Default DiscoverInstances 200 response
+                  x-microcks-default: true
+                  value:
+                    Instances:
+                    - InstanceId: i-1234567890abcdef0
+                      NamespaceName: production.internal
+                      ServiceName: payment-service
+                      HealthStatus: HEALTHY
+                      Attributes:
+                        AWS_INSTANCE_IPV4: 10.0.0.1
+                        AWS_INSTANCE_PORT: '8080'
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInput'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    Instance:
+      type: object
+      description: Represents an instance registered with a Cloud Map service.
+      properties:
+        Id:
+          type: string
+          description: An identifier that you want to associate with the instance.
+          example: i-1234567890abcdef0
+        Attributes:
+          type: object
+          description: Custom attributes associated with the instance.
+    HttpInstanceSummary:
+      type: object
+      description: Represents a summary of a discovered service instance.
+      properties:
+        InstanceId:
+          type: string
+          description: The ID of an instance.
+          example: i-1234567890abcdef0
+        NamespaceName:
+          type: string
+          description: The HttpName name of the namespace.
+          example: production.internal
+        ServiceName:
+          type: string
+          description: The name of the service.
+          example: payment-service
+        HealthStatus:
+          type: string
+          enum:
+          - HEALTHY
+          - UNHEALTHY
+          - UNKNOWN
+          description: If you configured health checking in the service, the current health status of the service's instances.
+        Attributes:
+          type: object
+          description: Custom attributes associated with the instance.
+    RegisterInstanceRequest:
+      type: object
+      description: Request body for registering an instance.
+      required:
+      - InstanceId
+      - Attributes
+      properties:
+        InstanceId:
+          type: string
+          description: An identifier that you want to associate with the instance.
+          example: i-1234567890abcdef0
+        CreatorRequestId:
+          type: string
+          description: A unique string that identifies the request and allows failed RegisterInstance requests to be retried.
+        Attributes:
+          type: object
+          description: A string map that contains the following information, including custom attributes.
+    DiscoverInstancesRequest:
+      type: object
+      description: Request body for discovering instances.
+      required:
+      - NamespaceName
+      - ServiceName
+      properties:
+        NamespaceName:
+          type: string
+          description: The HttpName name of the namespace.
+          example: production.internal
+        ServiceName:
+          type: string
+          description: The name of the service that you specified when you registered the instance.
+          example: payment-service
+        MaxResults:
+          type: integer
+          description: The maximum number of instances that you want Cloud Map to return.
+        HealthStatus:
+          type: string
+          enum:
+          - HEALTHY
+          - UNHEALTHY
+          - ALL
+          - HEALTHY_OR_ELSE_ALL
+          description: The health status of the instances that you want to discover.
+    DiscoverInstancesResponse:
+      type: object
+      description: Response for discovering instances.
+      properties:
+        Instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/HttpInstanceSummary'
+    ServiceNotFound:
+      type: object
+      description: No service exists with the specified ID.
+      properties:
+        Message:
+          type: string
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
+    RegisterInstanceResponse:
+      type: object
+      description: Response for registering an instance.
+      properties:
+        OperationId:
+          type: string
+          description: A value that you can use to determine whether the request completed successfully.
+          example: op-abc12345
+    InternalServiceError:
+      type: object
+      description: One or more required elements are missing or one or more elements are wrong.
+      properties:
+        Message:
+          type: string
+    ListInstancesResponse:
+      type: object
+      description: Response for listing instances.
+      properties:
+        Instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/Instance'
+        NextToken:
+          type: string
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon Cloud Map API Reference
+  url: https://docs.aws.amazon.com/cloud-map/latest/api/

@@ -1,0 +1,217 @@
+openapi: 3.1.0
+info:
+  title: Amazon Cloud Map Instances Services API
+  description: Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.
+  version: '2017-03-14'
+  contact:
+    name: Amazon Web Services
+    url: https://aws.amazon.com/contact-us/
+  termsOfService: https://aws.amazon.com/service-terms/
+  x-generated-from: documentation
+servers:
+- url: https://servicediscovery.{region}.amazonaws.com
+  description: Amazon Cloud Map Regional Endpoint
+  variables:
+    region:
+      default: us-east-1
+      description: AWS Region
+security:
+- aws_signature: []
+tags:
+- name: Services
+  description: Operations for managing services within namespaces
+paths:
+  /services:
+    get:
+      operationId: ListServices
+      summary: Amazon Cloud Map List Services
+      description: Lists summary information for all the services that are associated with one or more specified namespaces.
+      tags:
+      - Services
+      parameters:
+      - name: NextToken
+        in: query
+        description: For the first ListServices request, omit this value.
+        schema:
+          type: string
+      - name: MaxResults
+        in: query
+        description: The maximum number of services that you want AWS Cloud Map to return.
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListServicesResponse'
+              examples:
+                ListServices200Example:
+                  summary: Default ListServices 200 response
+                  x-microcks-default: true
+                  value:
+                    Services:
+                    - Id: svc-abc12345
+                      Arn: arn:aws:servicediscovery:us-east-1:123456789012:service/svc-abc12345
+                      Name: payment-service
+                      NamespaceId: ns-abc12345
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInput'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+    post:
+      operationId: CreateService
+      summary: Amazon Cloud Map Create a Service
+      description: Creates a service, which defines the configuration for the following entities — for public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53.
+      tags:
+      - Services
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateServiceRequest'
+            examples:
+              CreateServiceRequestExample:
+                summary: Default CreateService request
+                x-microcks-default: true
+                value:
+                  Name: payment-service
+                  NamespaceId: ns-abc12345
+                  Description: Payment processing service
+                  DnsConfig:
+                    RoutingPolicy: MULTIVALUE
+                    DnsRecords:
+                    - Type: A
+                      TTL: 60
+      responses:
+        '200':
+          description: Service created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateServiceResponse'
+              examples:
+                CreateService200Example:
+                  summary: Default CreateService 200 response
+                  x-microcks-default: true
+                  value:
+                    Service:
+                      Id: svc-abc12345
+                      Arn: arn:aws:servicediscovery:us-east-1:123456789012:service/svc-abc12345
+                      Name: payment-service
+                      NamespaceId: ns-abc12345
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InvalidInput'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InternalServiceError'
+      x-microcks-operation:
+        delay: 0
+        dispatcher: FALLBACK
+components:
+  schemas:
+    CreateServiceRequest:
+      type: object
+      description: Request body for creating a service.
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+          description: The name that you want to assign to the service.
+          example: payment-service
+        NamespaceId:
+          type: string
+          description: The ID of the namespace that you want to use to create the service.
+        Description:
+          type: string
+          description: A description for the service.
+        DnsConfig:
+          type: object
+          description: A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
+        CreatorRequestId:
+          type: string
+          description: A unique string that identifies the request and allows failed CreateService requests to be retried.
+    CreateServiceResponse:
+      type: object
+      description: Response for creating a service.
+      properties:
+        Service:
+          $ref: '#/components/schemas/Service'
+    Service:
+      type: object
+      description: Represents a Cloud Map service used for service discovery.
+      properties:
+        Id:
+          type: string
+          description: The ID of the service.
+          example: svc-abc12345
+        Arn:
+          type: string
+          description: The Amazon Resource Name (ARN) of the service.
+        Name:
+          type: string
+          description: The name of the service.
+          example: payment-service
+        NamespaceId:
+          type: string
+          description: The ID of the namespace.
+        Description:
+          type: string
+          description: The description of the service.
+        InstanceCount:
+          type: integer
+          description: The number of instances that are currently associated with the service.
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
+    ListServicesResponse:
+      type: object
+      description: Response for listing services.
+      properties:
+        Services:
+          type: array
+          items:
+            $ref: '#/components/schemas/Service'
+        NextToken:
+          type: string
+    InternalServiceError:
+      type: object
+      description: One or more required elements are missing or one or more elements are wrong.
+      properties:
+        Message:
+          type: string
+  securitySchemes:
+    aws_signature:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: AWS Signature Version 4
+externalDocs:
+  description: Amazon Cloud Map API Reference
+  url: https://docs.aws.amazon.com/cloud-map/latest/api/
