@@ -4,7 +4,19 @@ description: >-
   Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources and their locations. Define custom names for application resources and use Cloud Map
   to dynamically discover service dependencies with integrated health checking and automatic updates.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/amazon-cloud-map.png
 tags:
 - AWS
 - Cloud Map
@@ -17,21 +29,18 @@ created: '2026-03-16'
 modified: '2026-06-20'
 specificationVersion: '0.19'
 apis:
-- name: Amazon Cloud Map API
-  description: API for managing service discovery namespaces, services, and instances with health checking. Enables microservices to dynamically discover dependencies.
-  image: https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png
+- aid: amazon-cloud-map:amazon-cloud-map-instances-api
+  name: Amazon Cloud Map Instances API
+  description: Operations for registering and discovering service instances
   humanURL: https://aws.amazon.com/cloud-map/
   baseURL: https://servicediscovery.us-east-1.amazonaws.com
   tags:
-  - AWS
-  - Cloud Map
-  - Service Discovery
-  - Microservices
+  - Instances
   properties:
+  - type: OpenAPI
+    url: openapi/amazon-cloud-map-instances-api-openapi.yml
   - type: Documentation
     url: https://docs.aws.amazon.com/cloud-map/latest/api/
-  - type: OpenAPI
-    url: openapi/amazon-cloud-map-openapi.yml
   - type: GettingStarted
     url: https://aws.amazon.com/cloud-map/getting-started/
   - type: Pricing
@@ -46,10 +55,62 @@ apis:
     url: json-schema/cloud-map-service-schema.json
   - type: JSONLD
     url: json-ld/amazon-cloud-map-context.jsonld
-  - type: Overlay
-    url: overlays/amazon-cloud-map-openapi-overlay.yaml
-  - type: MCPServer
-    url: mcp/amazon-cloud-map-mcp.yml
+  - type: ErrorCatalog
+    url: errors/amazon-cloud-map-problem-types.yml
+- aid: amazon-cloud-map:amazon-cloud-map-namespaces-api
+  name: Amazon Cloud Map Namespaces API
+  description: Operations for managing service discovery namespaces
+  humanURL: https://aws.amazon.com/cloud-map/
+  baseURL: https://servicediscovery.us-east-1.amazonaws.com
+  tags:
+  - Namespaces
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-cloud-map-namespaces-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cloud-map/latest/api/
+  - type: GettingStarted
+    url: https://aws.amazon.com/cloud-map/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/cloud-map/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/cloud-map/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/cloud-map/latest/api/
+  - type: JSONSchema
+    url: json-schema/cloud-map-namespace-schema.json
+  - type: JSONSchema
+    url: json-schema/cloud-map-service-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-cloud-map-context.jsonld
+  - type: ErrorCatalog
+    url: errors/amazon-cloud-map-problem-types.yml
+- aid: amazon-cloud-map:amazon-cloud-map-services-api
+  name: Amazon Cloud Map Services API
+  description: Operations for managing services within namespaces
+  humanURL: https://aws.amazon.com/cloud-map/
+  baseURL: https://servicediscovery.us-east-1.amazonaws.com
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/amazon-cloud-map-services-api-openapi.yml
+  - type: Documentation
+    url: https://docs.aws.amazon.com/cloud-map/latest/api/
+  - type: GettingStarted
+    url: https://aws.amazon.com/cloud-map/getting-started/
+  - type: Pricing
+    url: https://aws.amazon.com/cloud-map/pricing/
+  - type: FAQ
+    url: https://aws.amazon.com/cloud-map/faqs/
+  - type: APIReference
+    url: https://docs.aws.amazon.com/cloud-map/latest/api/
+  - type: JSONSchema
+    url: json-schema/cloud-map-namespace-schema.json
+  - type: JSONSchema
+    url: json-schema/cloud-map-service-schema.json
+  - type: JSONLD
+    url: json-ld/amazon-cloud-map-context.jsonld
   - type: ErrorCatalog
     url: errors/amazon-cloud-map-problem-types.yml
 maintainers:
