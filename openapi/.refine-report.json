@@ -1,0 +1,18 @@
+{
+  "provider": "amazon-cloud-map",
+  "sources": [
+    "amazon-cloud-map-instances-api-openapi.yml",
+    "amazon-cloud-map-namespaces-api-openapi.yml",
+    "amazon-cloud-map-services-api-openapi.yml"
+  ],
+  "outputs": [
+    "amazon-cloud-map-instances-api-openapi.yml",
+    "amazon-cloud-map-namespaces-api-openapi.yml",
+    "amazon-cloud-map-services-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
