@@ -117,6 +117,10 @@ maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 common:
+- type: MCPServer
+  url: mcp/amazon-cloud-map-mcp.yml
+- type: Overlay
+  url: overlays/amazon-cloud-map-openapi-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/amazon-cloud-map-agentic-access.yml
 - type: TrustCenter
