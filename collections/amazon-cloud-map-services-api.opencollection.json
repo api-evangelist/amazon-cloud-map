@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Cloud Map Instances Services API",
+    "version": "2017-03-14"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Cloud Map List Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicediscovery.{region}.amazonaws.com/services",
+            "params": [
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "For the first ListServices request, omit this value."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of services that you want AWS Cloud Map to return."
+              }
+            ]
+          },
+          "docs": "Lists summary information for all the services that are associated with one or more specified namespaces."
+        },
+        {
+          "info": {
+            "name": "Amazon Cloud Map Create a Service",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicediscovery.{region}.amazonaws.com/services",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a service, which defines the configuration for the following entities — for public and private DNS namespaces, one of the following combinations of DNS records in Amazon Route 53."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

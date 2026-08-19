@@ -2,31 +2,35 @@ generated: '2026-06-20'
 method: derived
 status: candidate
 source: openapi/amazon-cloud-map-openapi.yml
-note: >-
-  No official hosted/remote MCP server dedicated to AWS Cloud Map was found
-  (AWS publishes MCP servers via the awslabs/mcp project, but none exposes Cloud
-  Map / ServiceDiscovery as a standalone remote server). Tools below are a
-  candidate list derived one-per-operation from the captured OpenAPI. Live calls
-  require AWS SigV4 credentials.
+note: No official hosted/remote MCP server dedicated to AWS Cloud Map was found (AWS publishes MCP servers
+  via the awslabs/mcp project, but none exposes Cloud Map / ServiceDiscovery as a standalone remote server).
+  Tools below are a candidate list derived one-per-operation from the captured OpenAPI. Live calls require
+  AWS SigV4 credentials.
 server:
   name: amazon-cloud-map
   transport: stdio
 tools:
-  - name: list_namespaces
-    description: Lists summary information about the namespaces created by the current AWS account.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#ListNamespaces
-  - name: list_services
-    description: Lists summary information for all services associated with one or more namespaces.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#ListServices
-  - name: create_service
-    description: Creates a service that defines the configuration for DNS/HTTP service discovery.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#CreateService
-  - name: list_instances
-    description: Lists summary information about the instances registered with a specified service.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#ListInstances
-  - name: register_instance
-    description: Creates or updates records and optionally a health check for an instance in a service.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#RegisterInstance
-  - name: discover_instances
-    description: Discovers registered instances for a specified namespace and service.
-    source_operation: openapi/amazon-cloud-map-openapi.yml#DiscoverInstances
+- name: list_namespaces
+  description: Lists summary information about the namespaces created by the current AWS account.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#ListNamespaces
+- name: list_services
+  description: Lists summary information for all services associated with one or more namespaces.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#ListServices
+- name: create_service
+  description: Creates a service that defines the configuration for DNS/HTTP service discovery.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#CreateService
+- name: list_instances
+  description: Lists summary information about the instances registered with a specified service.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#ListInstances
+- name: register_instance
+  description: Creates or updates records and optionally a health check for an instance in a service.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#RegisterInstance
+- name: discover_instances
+  description: Discovers registered instances for a specified namespace and service.
+  source_operation: openapi/amazon-cloud-map-openapi.yml#DiscoverInstances
+deployment:
+  mode: none
+  verified: derived
+  tools: 6
+  checked: '2026-08-12'
+  source: catalog MCP census

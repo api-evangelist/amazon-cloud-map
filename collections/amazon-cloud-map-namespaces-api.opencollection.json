@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Cloud Map Instances Namespaces API",
+    "version": "2017-03-14"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Namespaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Cloud Map List Namespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicediscovery.{region}.amazonaws.com/namespaces",
+            "params": [
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "For the first ListNamespaces request, omit this value."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of namespaces that you want AWS Cloud Map to return."
+              }
+            ]
+          },
+          "docs": "Lists summary information about the namespaces that were created by the current AWS account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

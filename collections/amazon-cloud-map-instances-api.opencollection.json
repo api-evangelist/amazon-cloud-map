@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Amazon Cloud Map Instances API",
+    "version": "2017-03-14"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Instances",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Amazon Cloud Map List Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://servicediscovery.{region}.amazonaws.com/services/:ServiceId/instances",
+            "params": [
+              {
+                "name": "ServiceId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the service that you want to list instances for."
+              },
+              {
+                "name": "NextToken",
+                "value": "",
+                "type": "query",
+                "description": "For the first ListInstances request, omit this value."
+              },
+              {
+                "name": "MaxResults",
+                "value": "",
+                "type": "query",
+                "description": "The maximum number of instances that you want AWS Cloud Map to return."
+              }
+            ]
+          },
+          "docs": "Lists summary information about the instances that you registered by using a specified service."
+        },
+        {
+          "info": {
+            "name": "Amazon Cloud Map Register an Instance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicediscovery.{region}.amazonaws.com/services/:ServiceId/instances",
+            "params": [
+              {
+                "name": "ServiceId",
+                "value": "",
+                "type": "path",
+                "description": "The ID of the service that you want to use for settings for the instance."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service."
+        },
+        {
+          "info": {
+            "name": "Amazon Cloud Map Discover Instances",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://servicediscovery.{region}.amazonaws.com/instances/discover",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Discovers registered instances for a specified namespace and service. You can use Cloud Map DiscoverInstances to discover instances for any type of namespace."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
