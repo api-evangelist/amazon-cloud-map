@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Amazon Cloud Map Instances API
   description: Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.
@@ -201,60 +201,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    Instance:
-      type: object
-      description: Represents an instance registered with a Cloud Map service.
-      properties:
-        Id:
-          type: string
-          description: An identifier that you want to associate with the instance.
-          example: i-1234567890abcdef0
-        Attributes:
-          type: object
-          description: Custom attributes associated with the instance.
-    HttpInstanceSummary:
-      type: object
-      description: Represents a summary of a discovered service instance.
-      properties:
-        InstanceId:
-          type: string
-          description: The ID of an instance.
-          example: i-1234567890abcdef0
-        NamespaceName:
-          type: string
-          description: The HttpName name of the namespace.
-          example: production.internal
-        ServiceName:
-          type: string
-          description: The name of the service.
-          example: payment-service
-        HealthStatus:
-          type: string
-          enum:
-          - HEALTHY
-          - UNHEALTHY
-          - UNKNOWN
-          description: If you configured health checking in the service, the current health status of the service's instances.
-        Attributes:
-          type: object
-          description: Custom attributes associated with the instance.
-    RegisterInstanceRequest:
-      type: object
-      description: Request body for registering an instance.
-      required:
-      - InstanceId
-      - Attributes
-      properties:
-        InstanceId:
-          type: string
-          description: An identifier that you want to associate with the instance.
-          example: i-1234567890abcdef0
-        CreatorRequestId:
-          type: string
-          description: A unique string that identifies the request and allows failed RegisterInstance requests to be retried.
-        Attributes:
-          type: object
-          description: A string map that contains the following information, including custom attributes.
     DiscoverInstancesRequest:
       type: object
       description: Request body for discovering instances.
@@ -281,6 +227,49 @@ components:
           - ALL
           - HEALTHY_OR_ELSE_ALL
           description: The health status of the instances that you want to discover.
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
+    HttpInstanceSummary:
+      type: object
+      description: Represents a summary of a discovered service instance.
+      properties:
+        InstanceId:
+          type: string
+          description: The ID of an instance.
+          example: i-1234567890abcdef0
+        NamespaceName:
+          type: string
+          description: The HttpName name of the namespace.
+          example: production.internal
+        ServiceName:
+          type: string
+          description: The name of the service.
+          example: payment-service
+        HealthStatus:
+          type: string
+          enum:
+          - HEALTHY
+          - UNHEALTHY
+          - UNKNOWN
+          description: If you configured health checking in the service, the current health status of the service's instances.
+        Attributes:
+          type: object
+          description: Custom attributes associated with the instance.
+    Instance:
+      type: object
+      description: Represents an instance registered with a Cloud Map service.
+      properties:
+        Id:
+          type: string
+          description: An identifier that you want to associate with the instance.
+          example: i-1234567890abcdef0
+        Attributes:
+          type: object
+          description: Custom attributes associated with the instance.
     DiscoverInstancesResponse:
       type: object
       description: Response for discovering instances.
@@ -289,17 +278,15 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HttpInstanceSummary'
-    ServiceNotFound:
+    ListInstancesResponse:
       type: object
-      description: No service exists with the specified ID.
+      description: Response for listing instances.
       properties:
-        Message:
-          type: string
-    InvalidInput:
-      type: object
-      description: One or more specified values aren't valid.
-      properties:
-        Message:
+        Instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/Instance'
+        NextToken:
           type: string
     RegisterInstanceResponse:
       type: object
@@ -315,15 +302,28 @@ components:
       properties:
         Message:
           type: string
-    ListInstancesResponse:
+    RegisterInstanceRequest:
       type: object
-      description: Response for listing instances.
+      description: Request body for registering an instance.
+      required:
+      - InstanceId
+      - Attributes
       properties:
-        Instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/Instance'
-        NextToken:
+        InstanceId:
+          type: string
+          description: An identifier that you want to associate with the instance.
+          example: i-1234567890abcdef0
+        CreatorRequestId:
+          type: string
+          description: A unique string that identifies the request and allows failed RegisterInstance requests to be retried.
+        Attributes:
+          type: object
+          description: A string map that contains the following information, including custom attributes.
+    ServiceNotFound:
+      type: object
+      description: No service exists with the specified ID.
+      properties:
+        Message:
           type: string
   securitySchemes:
     aws_signature:
