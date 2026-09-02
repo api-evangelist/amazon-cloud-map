@@ -221,3 +221,5 @@ common:
         description: Use Cloud Map as the service registry for App Mesh virtual services.
       - name: AWS IAM
         description: Control access to Cloud Map namespaces with IAM policies.
+x-parent: aws
+x-relationship: product
