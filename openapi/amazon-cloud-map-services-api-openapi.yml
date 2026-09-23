@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Amazon Cloud Map Instances Services API
+  title: Amazon Cloud Map Services API
   description: Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.
   version: '2017-03-14'
   contact:
@@ -132,12 +132,40 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    InternalServiceError:
+      type: object
+      description: One or more required elements are missing or one or more elements are wrong.
+      properties:
+        Message:
+          type: string
     InvalidInput:
       type: object
       description: One or more specified values aren't valid.
       properties:
         Message:
           type: string
+    CreateServiceRequest:
+      type: object
+      description: Request body for creating a service.
+      required:
+      - Name
+      properties:
+        Name:
+          type: string
+          description: The name that you want to assign to the service.
+          example: payment-service
+        NamespaceId:
+          type: string
+          description: The ID of the namespace that you want to use to create the service.
+        Description:
+          type: string
+          description: A description for the service.
+        DnsConfig:
+          type: object
+          description: A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
+        CreatorRequestId:
+          type: string
+          description: A unique string that identifies the request and allows failed CreateService requests to be retried.
     Service:
       type: object
       description: Represents a Cloud Map service used for service discovery.
@@ -178,34 +206,6 @@ components:
             $ref: '#/components/schemas/Service'
         NextToken:
           type: string
-    InternalServiceError:
-      type: object
-      description: One or more required elements are missing or one or more elements are wrong.
-      properties:
-        Message:
-          type: string
-    CreateServiceRequest:
-      type: object
-      description: Request body for creating a service.
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-          description: The name that you want to assign to the service.
-          example: payment-service
-        NamespaceId:
-          type: string
-          description: The ID of the namespace that you want to use to create the service.
-        Description:
-          type: string
-          description: A description for the service.
-        DnsConfig:
-          type: object
-          description: A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
-        CreatorRequestId:
-          type: string
-          description: A unique string that identifies the request and allows failed CreateService requests to be retried.
   securitySchemes:
     aws_signature:
       type: apiKey

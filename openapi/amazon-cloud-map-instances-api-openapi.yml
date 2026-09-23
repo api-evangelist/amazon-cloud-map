@@ -201,6 +201,43 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
+    InternalServiceError:
+      type: object
+      description: One or more required elements are missing or one or more elements are wrong.
+      properties:
+        Message:
+          type: string
+    RegisterInstanceResponse:
+      type: object
+      description: Response for registering an instance.
+      properties:
+        OperationId:
+          type: string
+          description: A value that you can use to determine whether the request completed successfully.
+          example: op-abc12345
+    Instance:
+      type: object
+      description: Represents an instance registered with a Cloud Map service.
+      properties:
+        Id:
+          type: string
+          description: An identifier that you want to associate with the instance.
+          example: i-1234567890abcdef0
+        Attributes:
+          type: object
+          description: Custom attributes associated with the instance.
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
+    ServiceNotFound:
+      type: object
+      description: No service exists with the specified ID.
+      properties:
+        Message:
+          type: string
     DiscoverInstancesRequest:
       type: object
       description: Request body for discovering instances.
@@ -227,12 +264,6 @@ components:
           - ALL
           - HEALTHY_OR_ELSE_ALL
           description: The health status of the instances that you want to discover.
-    InvalidInput:
-      type: object
-      description: One or more specified values aren't valid.
-      properties:
-        Message:
-          type: string
     HttpInstanceSummary:
       type: object
       description: Represents a summary of a discovered service instance.
@@ -259,17 +290,6 @@ components:
         Attributes:
           type: object
           description: Custom attributes associated with the instance.
-    Instance:
-      type: object
-      description: Represents an instance registered with a Cloud Map service.
-      properties:
-        Id:
-          type: string
-          description: An identifier that you want to associate with the instance.
-          example: i-1234567890abcdef0
-        Attributes:
-          type: object
-          description: Custom attributes associated with the instance.
     DiscoverInstancesResponse:
       type: object
       description: Response for discovering instances.
@@ -278,30 +298,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/HttpInstanceSummary'
-    ListInstancesResponse:
-      type: object
-      description: Response for listing instances.
-      properties:
-        Instances:
-          type: array
-          items:
-            $ref: '#/components/schemas/Instance'
-        NextToken:
-          type: string
-    RegisterInstanceResponse:
-      type: object
-      description: Response for registering an instance.
-      properties:
-        OperationId:
-          type: string
-          description: A value that you can use to determine whether the request completed successfully.
-          example: op-abc12345
-    InternalServiceError:
-      type: object
-      description: One or more required elements are missing or one or more elements are wrong.
-      properties:
-        Message:
-          type: string
     RegisterInstanceRequest:
       type: object
       description: Request body for registering an instance.
@@ -319,11 +315,15 @@ components:
         Attributes:
           type: object
           description: A string map that contains the following information, including custom attributes.
-    ServiceNotFound:
+    ListInstancesResponse:
       type: object
-      description: No service exists with the specified ID.
+      description: Response for listing instances.
       properties:
-        Message:
+        Instances:
+          type: array
+          items:
+            $ref: '#/components/schemas/Instance'
+        NextToken:
           type: string
   securitySchemes:
     aws_signature:

@@ -1,9 +1,7 @@
 {
   "provider": "amazon-cloud-map",
   "sources": [
-    "amazon-cloud-map-instances-api-openapi.yml",
-    "amazon-cloud-map-namespaces-api-openapi.yml",
-    "amazon-cloud-map-services-api-openapi.yml"
+    "_ae-authored/amazon-cloud-map-openapi.yml"
   ],
   "outputs": [
     "amazon-cloud-map-instances-api-openapi.yml",
@@ -14,7 +12,13 @@
   "errors": [],
   "warnings": [],
   "notes": [
+    "sourced from openapi/_original/ (0 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "amazon-cloud-map-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "apis.yml register: already-registered"
   ],
-  "skipped": []
+  "skipped": [
+    "amazon-cloud-map-instances-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-cloud-map-namespaces-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "amazon-cloud-map-services-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
