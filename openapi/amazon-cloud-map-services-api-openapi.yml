@@ -132,40 +132,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    InternalServiceError:
-      type: object
-      description: One or more required elements are missing or one or more elements are wrong.
-      properties:
-        Message:
-          type: string
-    InvalidInput:
-      type: object
-      description: One or more specified values aren't valid.
-      properties:
-        Message:
-          type: string
-    CreateServiceRequest:
-      type: object
-      description: Request body for creating a service.
-      required:
-      - Name
-      properties:
-        Name:
-          type: string
-          description: The name that you want to assign to the service.
-          example: payment-service
-        NamespaceId:
-          type: string
-          description: The ID of the namespace that you want to use to create the service.
-        Description:
-          type: string
-          description: A description for the service.
-        DnsConfig:
-          type: object
-          description: A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
-        CreatorRequestId:
-          type: string
-          description: A unique string that identifies the request and allows failed CreateService requests to be retried.
     Service:
       type: object
       description: Represents a Cloud Map service used for service discovery.
@@ -190,12 +156,28 @@ components:
         InstanceCount:
           type: integer
           description: The number of instances that are currently associated with the service.
-    CreateServiceResponse:
+    CreateServiceRequest:
       type: object
-      description: Response for creating a service.
+      description: Request body for creating a service.
+      required:
+      - Name
       properties:
-        Service:
-          $ref: '#/components/schemas/Service'
+        Name:
+          type: string
+          description: The name that you want to assign to the service.
+          example: payment-service
+        NamespaceId:
+          type: string
+          description: The ID of the namespace that you want to use to create the service.
+        Description:
+          type: string
+          description: A description for the service.
+        DnsConfig:
+          type: object
+          description: A complex type that contains information about the Amazon Route 53 records that you want AWS Cloud Map to create when you register an instance.
+        CreatorRequestId:
+          type: string
+          description: A unique string that identifies the request and allows failed CreateService requests to be retried.
     ListServicesResponse:
       type: object
       description: Response for listing services.
@@ -205,6 +187,24 @@ components:
           items:
             $ref: '#/components/schemas/Service'
         NextToken:
+          type: string
+    CreateServiceResponse:
+      type: object
+      description: Response for creating a service.
+      properties:
+        Service:
+          $ref: '#/components/schemas/Service'
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
+    InternalServiceError:
+      type: object
+      description: One or more required elements are missing or one or more elements are wrong.
+      properties:
+        Message:
           type: string
   securitySchemes:
     aws_signature:
