@@ -76,22 +76,6 @@ paths:
         dispatcher: FALLBACK
 components:
   schemas:
-    InvalidInput:
-      type: object
-      description: One or more specified values aren't valid.
-      properties:
-        Message:
-          type: string
-    ListNamespacesResponse:
-      type: object
-      description: Response for listing namespaces.
-      properties:
-        Namespaces:
-          type: array
-          items:
-            $ref: '#/components/schemas/Namespace'
-        NextToken:
-          type: string
     Namespace:
       type: object
       description: Represents a Cloud Map namespace for service discovery.
@@ -121,11 +105,27 @@ components:
           type: string
           format: date-time
           description: The date and time that the namespace was created.
+    InvalidInput:
+      type: object
+      description: One or more specified values aren't valid.
+      properties:
+        Message:
+          type: string
     InternalServiceError:
       type: object
       description: One or more required elements are missing or one or more elements are wrong.
       properties:
         Message:
+          type: string
+    ListNamespacesResponse:
+      type: object
+      description: Response for listing namespaces.
+      properties:
+        Namespaces:
+          type: array
+          items:
+            $ref: '#/components/schemas/Namespace'
+        NextToken:
           type: string
   securitySchemes:
     aws_signature:
