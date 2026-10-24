@@ -1,264 +1,228 @@
 {
+  "info": {
+    "_postman_id": "9d8cc132-077c-4ab2-bed6-230fc118001e",
+    "name": "Amazon Cloud Map Namespaces API",
+    "description": "Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:36:39.000Z",
+    "updatedAt": "2026-10-21T20:36:40.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-9d8cc132-077c-4ab2-bed6-230fc118001e"
+  },
   "item": [
     {
-      "id": "b23b2e7b-80ed-4afc-8b81-193aabce4b05",
-      "name": "Namespaces",
-      "description": {
-        "content": "Operations for managing service discovery namespaces",
-        "type": "text/plain"
-      },
+      "name": "namespaces",
       "item": [
         {
-          "id": "155799d1-cc0d-450f-92d1-e03ef3df0ddf",
           "name": "Amazon Cloud Map List Namespaces",
+          "id": "e123888e-5c0d-4753-9791-13f4af83e9b5",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Amazon Cloud Map List Namespaces",
-            "description": {
-              "content": "Lists summary information about the namespaces that were created by the current AWS account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "namespaces"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "NextToken",
-                  "value": "<string>",
-                  "description": "For the first ListNamespaces request, omit this value."
-                },
-                {
-                  "disabled": false,
-                  "key": "MaxResults",
-                  "value": "<integer>",
-                  "description": "The maximum number of namespaces that you want AWS Cloud Map to return."
-                }
-              ],
-              "variable": [
-                {
-                  "description": "AWS Region",
-                  "type": "any",
-                  "value": "{{region}}",
-                  "key": "region"
-                }
-              ]
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/namespaces?NextToken=<string>&MaxResults=<integer>",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "namespaces"
+              ],
+              "query": [
+                {
+                  "description": "For the first ListNamespaces request, omit this value.",
+                  "key": "NextToken",
+                  "value": "<string>"
+                },
+                {
+                  "description": "The maximum number of namespaces that you want AWS Cloud Map to return.",
+                  "key": "MaxResults",
+                  "value": "<integer>"
+                }
+              ]
+            },
+            "description": "Lists summary information about the namespaces that were created by the current AWS account."
           },
           "response": [
             {
-              "id": "2a8c7d6d-2c95-4c4f-969a-3a7f7b0ce13f",
+              "id": "e12678a6-5cb7-42de-b690-7af1590928f7",
               "name": "Successful response",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "namespaces"
-                  ],
+                  "raw": "{{baseUrl}}/namespaces?NextToken=<string>&MaxResults=<integer>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "namespaces"
+                  ],
                   "query": [
                     {
+                      "description": "For the first ListNamespaces request, omit this value.",
                       "key": "NextToken",
                       "value": "<string>"
                     },
                     {
+                      "description": "The maximum number of namespaces that you want AWS Cloud Map to return.",
                       "key": "MaxResults",
                       "value": "<integer>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"Namespaces\": [\n    {\n      \"Id\": \"ns-abc12345\",\n      \"Arn\": \"arn:aws:servicediscovery:us-east-1:123456789012:namespace/ns-abc12345\",\n      \"Name\": \"production.internal\",\n      \"Type\": \"DNS_PRIVATE\"\n    }\n  ],\n  \"NextToken\": null\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"Namespaces\": [\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Type\": \"DNS_PUBLIC\",\n      \"Description\": \"<string>\",\n      \"CreateDate\": \"<dateTime>\"\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Arn\": \"<string>\",\n      \"Name\": \"<string>\",\n      \"Type\": \"HTTP\",\n      \"Description\": \"<string>\",\n      \"CreateDate\": \"<dateTime>\"\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:36:40.000Z",
+              "updatedAt": "2026-10-21T20:36:40.000Z",
+              "uid": "35240-e12678a6-5cb7-42de-b690-7af1590928f7"
             },
             {
-              "id": "81036c9f-57f6-4396-9c76-321c9804910d",
+              "id": "18edca86-d189-4751-895e-511291ba1400",
               "name": "Bad request",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "namespaces"
-                  ],
+                  "raw": "{{baseUrl}}/namespaces?NextToken=<string>&MaxResults=<integer>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "namespaces"
+                  ],
                   "query": [
                     {
+                      "description": "For the first ListNamespaces request, omit this value.",
                       "key": "NextToken",
                       "value": "<string>"
                     },
                     {
+                      "description": "The maximum number of namespaces that you want AWS Cloud Map to return.",
                       "key": "MaxResults",
                       "value": "<integer>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"Message\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"Message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:36:40.000Z",
+              "updatedAt": "2026-10-21T20:36:40.000Z",
+              "uid": "35240-18edca86-d189-4751-895e-511291ba1400"
             },
             {
-              "id": "97b52c6f-9f10-4e32-a6f6-97d42ff1c743",
+              "id": "52e46bdf-fa98-436b-9d15-27afc407cce8",
               "name": "Internal server error",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: apikey",
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
                 "url": {
-                  "path": [
-                    "namespaces"
-                  ],
+                  "raw": "{{baseUrl}}/namespaces?NextToken=<string>&MaxResults=<integer>",
                   "host": [
                     "{{baseUrl}}"
                   ],
+                  "path": [
+                    "namespaces"
+                  ],
                   "query": [
                     {
+                      "description": "For the first ListNamespaces request, omit this value.",
                       "key": "NextToken",
                       "value": "<string>"
                     },
                     {
+                      "description": "The maximum number of namespaces that you want AWS Cloud Map to return.",
                       "key": "MaxResults",
                       "value": "<integer>"
                     }
-                  ],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
                   ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                }
               },
               "status": "Internal Server Error",
               "code": 500,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json"
                 }
               ],
-              "body": "{\n  \"Message\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"Message\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:36:40.000Z",
+              "updatedAt": "2026-10-21T20:36:40.000Z",
+              "uid": "35240-52e46bdf-fa98-436b-9d15-27afc407cce8"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:36:40.000Z",
+          "updatedAt": "2026-10-21T20:36:40.000Z",
+          "uid": "35240-e123888e-5c0d-4753-9791-13f4af83e9b5"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "AWS Region",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "us-east-1",
-      "key": "region"
-    },
-    {
-      "type": "string",
-      "value": "https://servicediscovery.{{region}}.amazonaws.com",
-      "key": "baseUrl"
+      "id": "daeecf70-d6d7-4586-87d8-4487613888bf",
+      "createdAt": "2026-10-21T20:36:40.000Z",
+      "updatedAt": "2026-10-21T20:36:40.000Z",
+      "uid": "35240-daeecf70-d6d7-4586-87d8-4487613888bf"
     }
   ],
   "auth": {
@@ -266,25 +230,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "14d77480-f47f-425c-b182-b629bb0b6991",
-    "name": "Amazon Cloud Map Instances Namespaces API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.\n\nContact Support:\n Name: Amazon Web Services",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://servicediscovery.{{region}}.amazonaws.com"
     }
-  }
+  ]
 }

@@ -1,866 +1,817 @@
 {
+  "info": {
+    "_postman_id": "dc901954-12b3-4961-acbf-d04fcd9ebfbc",
+    "name": "Amazon Cloud Map Instances API",
+    "description": "Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.\n\nContact Support:\n Name: Amazon Web Services",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:36:33.000Z",
+    "updatedAt": "2026-10-21T20:36:34.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-dc901954-12b3-4961-acbf-d04fcd9ebfbc"
+  },
   "item": [
     {
-      "id": "28c33dae-aa70-4837-b4d2-85254b369b20",
-      "name": "Instances",
-      "description": {
-        "content": "Operations for registering and discovering service instances",
-        "type": "text/plain"
-      },
+      "name": "services",
       "item": [
         {
-          "id": "f462e38b-7862-465c-9194-afbc78ea66de",
-          "name": "Amazon Cloud Map List Instances",
-          "request": {
-            "name": "Amazon Cloud Map List Instances",
-            "description": {
-              "content": "Lists summary information about the instances that you registered by using a specified service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "services",
-                ":ServiceId",
-                "instances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "NextToken",
-                  "value": "<string>",
-                  "description": "For the first ListInstances request, omit this value."
-                },
-                {
-                  "disabled": false,
-                  "key": "MaxResults",
-                  "value": "<integer>",
-                  "description": "The maximum number of instances that you want AWS Cloud Map to return."
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "ServiceId",
-                  "description": "(Required) The ID of the service that you want to list instances for."
-                },
-                {
-                  "description": "AWS Region",
-                  "type": "any",
-                  "value": "{{region}}",
-                  "key": "region"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{ServiceId}",
+          "item": [
             {
-              "id": "2fd2da85-986b-48ed-a6b7-be860242db85",
-              "name": "Successful response",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "NextToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "MaxResults",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to list instances for."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "instances",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "Amazon Cloud Map List Instances",
+                  "id": "9965f3ee-4a84-41a9-8346-a0d2f955276d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/services/:ServiceId/instances?NextToken=<string>&MaxResults=<integer>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        ":ServiceId",
+                        "instances"
+                      ],
+                      "query": [
+                        {
+                          "description": "For the first ListInstances request, omit this value.",
+                          "key": "NextToken",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "The maximum number of instances that you want AWS Cloud Map to return.",
+                          "key": "MaxResults",
+                          "value": "<integer>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f735b3d5-ae09-4b01-8c65-1882f4d4994c",
+                          "key": "ServiceId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the service that you want to list instances for."
+                        }
+                      ]
+                    },
+                    "description": "Lists summary information about the instances that you registered by using a specified service."
+                  },
+                  "response": [
+                    {
+                      "id": "0e5a977d-562b-49a0-bd91-8c980d6d3257",
+                      "name": "Successful response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances?NextToken=<string>&MaxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "query": [
+                            {
+                              "description": "For the first ListInstances request, omit this value.",
+                              "key": "NextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of instances that you want AWS Cloud Map to return.",
+                              "key": "MaxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Instances\": [\n    {\n      \"Id\": \"<string>\",\n      \"Attributes\": {}\n    },\n    {\n      \"Id\": \"<string>\",\n      \"Attributes\": {}\n    }\n  ],\n  \"NextToken\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-0e5a977d-562b-49a0-bd91-8c980d6d3257"
+                    },
+                    {
+                      "id": "1763459f-483d-47f3-903a-170a7c64b1fb",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances?NextToken=<string>&MaxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "query": [
+                            {
+                              "description": "For the first ListInstances request, omit this value.",
+                              "key": "NextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of instances that you want AWS Cloud Map to return.",
+                              "key": "MaxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-1763459f-483d-47f3-903a-170a7c64b1fb"
+                    },
+                    {
+                      "id": "eb3507e0-afe2-428e-bac3-bb075dff4a01",
+                      "name": "Service not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances?NextToken=<string>&MaxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "query": [
+                            {
+                              "description": "For the first ListInstances request, omit this value.",
+                              "key": "NextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of instances that you want AWS Cloud Map to return.",
+                              "key": "MaxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-eb3507e0-afe2-428e-bac3-bb075dff4a01"
+                    },
+                    {
+                      "id": "fd971e8b-26e2-45d4-a285-6ccbe7041d45",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances?NextToken=<string>&MaxResults=<integer>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "query": [
+                            {
+                              "description": "For the first ListInstances request, omit this value.",
+                              "key": "NextToken",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "The maximum number of instances that you want AWS Cloud Map to return.",
+                              "key": "MaxResults",
+                              "value": "<integer>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-fd971e8b-26e2-45d4-a285-6ccbe7041d45"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:36:34.000Z",
+                  "updatedAt": "2026-10-21T20:36:34.000Z",
+                  "uid": "35240-9965f3ee-4a84-41a9-8346-a0d2f955276d"
+                },
+                {
+                  "name": "Amazon Cloud Map Register an Instance",
+                  "id": "c57ce1fe-0067-4174-8bfb-cfee462b6412",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"InstanceId\": \"<string>\",\n  \"Attributes\": {},\n  \"CreatorRequestId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/services/:ServiceId/instances",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "services",
+                        ":ServiceId",
+                        "instances"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5d0b8d5e-190d-4e43-b03c-353c5d44d157",
+                          "key": "ServiceId",
+                          "value": "<string>",
+                          "description": "(Required) The ID of the service that you want to use for settings for the instance."
+                        }
+                      ]
+                    },
+                    "description": "Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service."
+                  },
+                  "response": [
+                    {
+                      "id": "c8d132c9-1236-4f81-b677-584afcee034d",
+                      "name": "Instance registered",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"InstanceId\": \"<string>\",\n  \"Attributes\": {},\n  \"CreatorRequestId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"OperationId\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-c8d132c9-1236-4f81-b677-584afcee034d"
+                    },
+                    {
+                      "id": "81cbe1b8-e9fd-4a74-a50f-31147b5110a1",
+                      "name": "Bad request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"InstanceId\": \"<string>\",\n  \"Attributes\": {},\n  \"CreatorRequestId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-81cbe1b8-e9fd-4a74-a50f-31147b5110a1"
+                    },
+                    {
+                      "id": "104653f1-e00c-40c6-87e1-bb4cdc761313",
+                      "name": "Internal server error",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "Authorization",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"InstanceId\": \"<string>\",\n  \"Attributes\": {},\n  \"CreatorRequestId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/services/:ServiceId/instances",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "services",
+                            ":ServiceId",
+                            "instances"
+                          ],
+                          "variable": [
+                            {
+                              "key": "ServiceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"Message\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:36:34.000Z",
+                      "updatedAt": "2026-10-21T20:36:34.000Z",
+                      "uid": "35240-104653f1-e00c-40c6-87e1-bb4cdc761313"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:36:34.000Z",
+                  "updatedAt": "2026-10-21T20:36:34.000Z",
+                  "uid": "35240-c57ce1fe-0067-4174-8bfb-cfee462b6412"
                 }
               ],
-              "body": "{\n  \"Instances\": [\n    {\n      \"Id\": \"instance-abc12345\",\n      \"Attributes\": {\n        \"AWS_INSTANCE_IPV4\": \"10.0.0.1\",\n        \"AWS_INSTANCE_PORT\": \"8080\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4ab61aca-dfac-4755-a9fe-013e3285b850",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "NextToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "MaxResults",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to list instances for."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9a3d3a1c-b233-4608-add7-9303efad1004",
-              "name": "Service not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "NextToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "MaxResults",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to list instances for."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "636fb303-90d9-4090-9f67-086a9c3c2869",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "NextToken",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "MaxResults",
-                      "value": "<integer>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to list instances for."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "20e2b64b-f3e9-4179-962b-4a01518c690f",
+              "createdAt": "2026-10-21T20:36:34.000Z",
+              "updatedAt": "2026-10-21T20:36:34.000Z",
+              "uid": "35240-20e2b64b-f3e9-4179-962b-4a01518c690f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bffc5f5f-4af6-4eaf-977c-8e9eb6aaad99",
-          "name": "Amazon Cloud Map Register an Instance",
-          "request": {
-            "name": "Amazon Cloud Map Register an Instance",
-            "description": {
-              "content": "Creates or updates one or more records and, optionally, creates a health check based on the settings in a specified service.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "services",
-                ":ServiceId",
-                "instances"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "ServiceId",
-                  "description": "(Required) The ID of the service that you want to use for settings for the instance."
-                },
-                {
-                  "description": "AWS Region",
-                  "type": "any",
-                  "value": "{{region}}",
-                  "key": "region"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"InstanceId\": \"<string>\",\n  \"Attributes\": \"<object>\",\n  \"CreatorRequestId\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "d246ea6d-c0fa-4901-81df-0e41e654c879",
-              "name": "Instance registered",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to use for settings for the instance."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"InstanceId\": \"i-1234567890abcdef0\",\n  \"Attributes\": {\n    \"AWS_INSTANCE_IPV4\": \"10.0.0.1\",\n    \"AWS_INSTANCE_PORT\": \"8080\"\n  },\n  \"CreatorRequestId\": \"req-abc123\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"OperationId\": \"op-abc12345\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "415d4f6f-a058-45c1-b68b-5ca4d3137158",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to use for settings for the instance."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"InstanceId\": \"i-1234567890abcdef0\",\n  \"Attributes\": {\n    \"AWS_INSTANCE_IPV4\": \"10.0.0.1\",\n    \"AWS_INSTANCE_PORT\": \"8080\"\n  },\n  \"CreatorRequestId\": \"req-abc123\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "649d5d0d-88f0-4006-89c6-4104746d9ab3",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "services",
-                    ":ServiceId",
-                    "instances"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "ServiceId",
-                      "description": "(Required) The ID of the service that you want to use for settings for the instance."
-                    },
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"InstanceId\": \"i-1234567890abcdef0\",\n  \"Attributes\": {\n    \"AWS_INSTANCE_IPV4\": \"10.0.0.1\",\n    \"AWS_INSTANCE_PORT\": \"8080\"\n  },\n  \"CreatorRequestId\": \"req-abc123\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "9758febf-4185-4a7e-8d50-2ae1a2077309",
-          "name": "Amazon Cloud Map Discover Instances",
-          "request": {
-            "name": "Amazon Cloud Map Discover Instances",
-            "description": {
-              "content": "Discovers registered instances for a specified namespace and service. You can use Cloud Map DiscoverInstances to discover instances for any type of namespace.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "instances",
-                "discover"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "description": "AWS Region",
-                  "type": "any",
-                  "value": "{{region}}",
-                  "key": "region"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"NamespaceName\": \"<string>\",\n  \"ServiceName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"HealthStatus\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "821480e0-eadb-4740-bcf4-472944b4e0fc",
-              "name": "Instances discovered",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    "discover"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"NamespaceName\": \"production.internal\",\n  \"ServiceName\": \"payment-service\",\n  \"MaxResults\": 10,\n  \"HealthStatus\": \"HEALTHY\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Instances\": [\n    {\n      \"InstanceId\": \"i-1234567890abcdef0\",\n      \"NamespaceName\": \"production.internal\",\n      \"ServiceName\": \"payment-service\",\n      \"HealthStatus\": \"HEALTHY\",\n      \"Attributes\": {\n        \"AWS_INSTANCE_IPV4\": \"10.0.0.1\",\n        \"AWS_INSTANCE_PORT\": \"8080\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "04d5052b-830b-490a-8368-81b94b4cce2d",
-              "name": "Bad request",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    "discover"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"NamespaceName\": \"production.internal\",\n  \"ServiceName\": \"payment-service\",\n  \"MaxResults\": 10,\n  \"HealthStatus\": \"HEALTHY\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d7d24c49-aed1-447e-bbae-13367461f6e6",
-              "name": "Internal server error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "instances",
-                    "discover"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "description": "AWS Region",
-                      "type": "any",
-                      "value": "{{region}}",
-                      "key": "region"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"NamespaceName\": \"production.internal\",\n  \"ServiceName\": \"payment-service\",\n  \"MaxResults\": 10,\n  \"HealthStatus\": \"HEALTHY\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"Message\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "252cded5-dd52-45e3-a465-85319c3c815c",
+          "createdAt": "2026-10-21T20:36:34.000Z",
+          "updatedAt": "2026-10-21T20:36:34.000Z",
+          "uid": "35240-252cded5-dd52-45e3-a465-85319c3c815c"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "description": {
-        "content": "AWS Region",
-        "type": "text/plain"
-      },
-      "type": "any",
-      "value": "us-east-1",
-      "key": "region"
+      "id": "7ed9973c-03f0-4482-8c3d-4e988d073773",
+      "createdAt": "2026-10-21T20:36:34.000Z",
+      "updatedAt": "2026-10-21T20:36:34.000Z",
+      "uid": "35240-7ed9973c-03f0-4482-8c3d-4e988d073773"
     },
     {
-      "type": "string",
-      "value": "https://servicediscovery.{{region}}.amazonaws.com",
-      "key": "baseUrl"
+      "name": "instances",
+      "item": [
+        {
+          "name": "discover",
+          "item": [
+            {
+              "name": "Amazon Cloud Map Discover Instances",
+              "id": "967b0faf-596e-40e4-b2c7-c2208b94f69e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"NamespaceName\": \"<string>\",\n  \"ServiceName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"HealthStatus\": \"HEALTHY\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/instances/discover",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "instances",
+                    "discover"
+                  ]
+                },
+                "description": "Discovers registered instances for a specified namespace and service. You can use Cloud Map DiscoverInstances to discover instances for any type of namespace."
+              },
+              "response": [
+                {
+                  "id": "f835f6b4-d2d0-449f-9e76-028c43a6b637",
+                  "name": "Instances discovered",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"NamespaceName\": \"<string>\",\n  \"ServiceName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"HealthStatus\": \"HEALTHY\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instances/discover",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instances",
+                        "discover"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Instances\": [\n    {\n      \"InstanceId\": \"<string>\",\n      \"NamespaceName\": \"<string>\",\n      \"ServiceName\": \"<string>\",\n      \"HealthStatus\": \"UNKNOWN\",\n      \"Attributes\": {}\n    },\n    {\n      \"InstanceId\": \"<string>\",\n      \"NamespaceName\": \"<string>\",\n      \"ServiceName\": \"<string>\",\n      \"HealthStatus\": \"UNHEALTHY\",\n      \"Attributes\": {}\n    }\n  ]\n}",
+                  "createdAt": "2026-10-21T20:36:34.000Z",
+                  "updatedAt": "2026-10-21T20:36:34.000Z",
+                  "uid": "35240-f835f6b4-d2d0-449f-9e76-028c43a6b637"
+                },
+                {
+                  "id": "ad21f976-6b99-4892-bde9-be5f80dfb694",
+                  "name": "Bad request",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"NamespaceName\": \"<string>\",\n  \"ServiceName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"HealthStatus\": \"HEALTHY\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instances/discover",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instances",
+                        "discover"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:36:34.000Z",
+                  "updatedAt": "2026-10-21T20:36:34.000Z",
+                  "uid": "35240-ad21f976-6b99-4892-bde9-be5f80dfb694"
+                },
+                {
+                  "id": "a7e62f06-bde5-4acb-b15e-6c4e8ce6c316",
+                  "name": "Internal server error",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "Authorization",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"NamespaceName\": \"<string>\",\n  \"ServiceName\": \"<string>\",\n  \"MaxResults\": \"<integer>\",\n  \"HealthStatus\": \"HEALTHY\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/instances/discover",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "instances",
+                        "discover"
+                      ]
+                    }
+                  },
+                  "status": "Internal Server Error",
+                  "code": 500,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"Message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:36:34.000Z",
+                  "updatedAt": "2026-10-21T20:36:34.000Z",
+                  "uid": "35240-a7e62f06-bde5-4acb-b15e-6c4e8ce6c316"
+                }
+              ],
+              "createdAt": "2026-10-21T20:36:34.000Z",
+              "updatedAt": "2026-10-21T20:36:34.000Z",
+              "uid": "35240-967b0faf-596e-40e4-b2c7-c2208b94f69e"
+            }
+          ],
+          "id": "4080204d-bf32-4dc7-89c9-4888de2116f3",
+          "createdAt": "2026-10-21T20:36:34.000Z",
+          "updatedAt": "2026-10-21T20:36:34.000Z",
+          "uid": "35240-4080204d-bf32-4dc7-89c9-4888de2116f3"
+        }
+      ],
+      "id": "a511e07c-3ffc-4084-8102-6205666d9b81",
+      "createdAt": "2026-10-21T20:36:34.000Z",
+      "updatedAt": "2026-10-21T20:36:34.000Z",
+      "uid": "35240-a511e07c-3ffc-4084-8102-6205666d9b81"
     }
   ],
   "auth": {
@@ -868,25 +819,29 @@
     "apikey": [
       {
         "key": "key",
-        "value": "Authorization"
+        "value": "Authorization",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "76c49057-c286-43db-8db2-a7a02e740654",
-    "name": "Amazon Cloud Map Instances API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking.\n\nContact Support:\n Name: Amazon Web Services",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "region",
+      "value": "us-east-1"
+    },
+    {
+      "key": "baseUrl",
+      "value": "https://servicediscovery.{{region}}.amazonaws.com"
     }
-  }
+  ]
 }
