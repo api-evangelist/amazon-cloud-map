@@ -1,4 +1,4 @@
-# Amazon Cloud Map (amazon-cloud-map)
+# Amazon Cloud Map
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,118 +66,197 @@
 
 Amazon Cloud Map is a cloud resource discovery service that maintains an updated registry of application resources and their locations. Define custom names for application resources and use Cloud Map to dynamically discover service dependencies with integrated health checking and automatic updates.
 
-**URL:** [Visit APIs.json URL](https://raw.githubusercontent.com/api-evangelist/amazon-cloud-map/refs/heads/main/apis.yml)
+**Areas:** AWS · Cloud Map · Service Discovery · Microservices · DNS
 
-**Run:** [Capabilities Using Naftiko](https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=company-api-evangelist&utm_content=repo)
+## Amazon Cloud Map on APIs.io
 
-## Tags:
+Everything profiled for Amazon Cloud Map is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/amazon-cloud-map/](https://apis.io/providers/amazon-cloud-map/)** — or go straight to one of the APIs or properties below.
 
- - AWS, Cloud Map, Service Discovery, Microservices, DNS
+### APIs (5)
 
-## Timestamps
+- [Amazon Cloud Map Instances API](https://apis.io/apis/amazon-cloud-map/amazon-cloud-map-instances-api/) — Operations for registering and discovering service instances
+- [Amazon Cloud Map Namespaces API](https://apis.io/apis/amazon-cloud-map/amazon-cloud-map-namespaces-api/) — Operations for managing service discovery namespaces
+- [Amazon Cloud Map Services API](https://apis.io/apis/amazon-cloud-map/amazon-cloud-map-services-api/) — Operations for managing services within namespaces
+- [Amazon Cloud Map Cloud Map Operations API](https://apis.io/apis/amazon-cloud-map/amazon-cloud-map-operations-api/) — The Cloud Map Operations API from Amazon Cloud Map — 14 operation(s) for cloud map operations.
+- [Amazon Cloud Map Cloud Map Service Attribute API](https://apis.io/apis/amazon-cloud-map/amazon-cloud-map-service-attribute-api/) — The Cloud Map Service Attribute API from Amazon Cloud Map — 3 operation(s) for cloud map service attribute.
 
-- **Created:** 2026-03-16
-- **Modified:** 2026-04-19
+### Published properties
 
-## APIs
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-### Amazon Cloud Map API
-API for managing service discovery namespaces, services, and instances with health checking. Enables microservices to dynamically discover dependencies.
+#### MCP servers (1)
 
-**Human URL:** [https://aws.amazon.com/cloud-map/](https://aws.amazon.com/cloud-map/)
+Model Context Protocol servers that expose the API to agents.
 
-#### Tags:
+- [amazon-cloud-map](https://apis.io/servers/amazon-cloud-map/amazon-cloud-map/)
 
- - AWS, Cloud Map, Service Discovery, Microservices
+#### Agentic access (1)
 
-#### Properties
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- [Documentation](https://docs.aws.amazon.com/cloud-map/latest/api/)
-- [OpenAPI](openapi/amazon-cloud-map-openapi.yml)
-- [GettingStarted](https://aws.amazon.com/cloud-map/getting-started/)
-- [Pricing](https://aws.amazon.com/cloud-map/pricing/)
-- [FAQ](https://aws.amazon.com/cloud-map/faqs/)
-- [APIReference](https://docs.aws.amazon.com/cloud-map/latest/api/)
-- [JSONSchema](json-schema/cloud-map-namespace-schema.json)
-- [JSONSchema](json-schema/cloud-map-service-schema.json)
-- [JSONLD](json-ld/amazon-cloud-map-context.jsonld)
+- [Amazon Cloud Map Agentic Access](https://apis.io/agentic-access/amazon-cloud-map/amazon-cloud-map-agentic-access/)
 
-## Common Properties
+#### JSON Schema (13)
 
-- [Portal](https://aws.amazon.com/)
+The data models the API reads and writes.
+
+- [CreateServiceRequest](https://apis.io/schemas/amazon-cloud-map/cloud-map-create-service-request/)
+- [CreateServiceResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-create-service-response/)
+- [DiscoverInstancesRequest](https://apis.io/schemas/amazon-cloud-map/cloud-map-discover-instances-request/)
+- [DiscoverInstancesResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-discover-instances-response/)
+- [HttpInstanceSummary](https://apis.io/schemas/amazon-cloud-map/cloud-map-http-instance-summary/)
+- [Instance](https://apis.io/schemas/amazon-cloud-map/cloud-map-instance/)
+- [ListInstancesResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-list-instances-response/)
+- [ListNamespacesResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-list-namespaces-response/)
+- [ListServicesResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-list-services-response/)
+- [Namespace](https://apis.io/schemas/amazon-cloud-map/cloud-map-namespace/)
+- [RegisterInstanceRequest](https://apis.io/schemas/amazon-cloud-map/cloud-map-register-instance-request/)
+- [RegisterInstanceResponse](https://apis.io/schemas/amazon-cloud-map/cloud-map-register-instance-response/)
+- [Service](https://apis.io/schemas/amazon-cloud-map/cloud-map-service/)
+
+#### JSON Structure (13)
+
+Data models expressed in JSON Structure.
+
+- [Cloud Map Create Service Request Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-create-service-request-structure/)
+- [Cloud Map Create Service Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-create-service-response-structure/)
+- [Cloud Map Discover Instances Request Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-discover-instances-request-structure/)
+- [Cloud Map Discover Instances Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-discover-instances-response-structure/)
+- [Cloud Map Http Instance Summary Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-http-instance-summary-structure/)
+- [Cloud Map Instance Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-instance-structure/)
+- [Cloud Map List Instances Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-list-instances-response-structure/)
+- [Cloud Map List Namespaces Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-list-namespaces-response-structure/)
+- [Cloud Map List Services Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-list-services-response-structure/)
+- [Cloud Map Namespace Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-namespace-structure/)
+- [Cloud Map Register Instance Request Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-register-instance-request-structure/)
+- [Cloud Map Register Instance Response Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-register-instance-response-structure/)
+- [Cloud Map Service Structure](https://apis.io/json-structure/amazon-cloud-map/cloud-map-service-structure/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Amazon Cloud Map Context](https://apis.io/jsonld/amazon-cloud-map/amazon-cloud-map-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Amazon Cloud Map Vocabulary](https://apis.io/vocabularies/amazon-cloud-map/amazon-cloud-map-vocabulary/)
+
+#### Examples (13)
+
+Example requests and responses.
+
+- [Cloud Map Create Service Request Example](https://apis.io/examples/amazon-cloud-map/cloud-map-create-service-request-example/)
+- [Cloud Map Create Service Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-create-service-response-example/)
+- [Cloud Map Discover Instances Request Example](https://apis.io/examples/amazon-cloud-map/cloud-map-discover-instances-request-example/)
+- [Cloud Map Discover Instances Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-discover-instances-response-example/)
+- [Cloud Map Http Instance Summary Example](https://apis.io/examples/amazon-cloud-map/cloud-map-http-instance-summary-example/)
+- [Cloud Map Instance Example](https://apis.io/examples/amazon-cloud-map/cloud-map-instance-example/)
+- [Cloud Map List Instances Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-list-instances-response-example/)
+- [Cloud Map List Namespaces Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-list-namespaces-response-example/)
+- [Cloud Map List Services Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-list-services-response-example/)
+- [Cloud Map Namespace Example](https://apis.io/examples/amazon-cloud-map/cloud-map-namespace-example/)
+- [Cloud Map Register Instance Request Example](https://apis.io/examples/amazon-cloud-map/cloud-map-register-instance-request-example/)
+- [Cloud Map Register Instance Response Example](https://apis.io/examples/amazon-cloud-map/cloud-map-register-instance-response-example/)
+- [Cloud Map Service Example](https://apis.io/examples/amazon-cloud-map/cloud-map-service-example/)
+
+#### Collections (3)
+
+Postman and Open Collection request collections.
+
+- [Amazon Cloud Map Instances API](https://apis.io/collections/amazon-cloud-map/open-amazon-cloud-map-instances-api/)
+- [Amazon Cloud Map Instances Namespaces API](https://apis.io/collections/amazon-cloud-map/open-amazon-cloud-map-namespaces-api/)
+- [Amazon Cloud Map Instances Services API](https://apis.io/collections/amazon-cloud-map/open-amazon-cloud-map-services-api/)
+
+#### Overlays (1)
+
+OpenAPI overlays, including conversational phrasing for each operation.
+
+- [Amazon Cloud Map Openapi Overlay](https://apis.io/overlays/amazon-cloud-map/amazon-cloud-map-openapi-overlay/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Amazon Cloud Map — jsonschema rules](https://apis.io/rules/amazon-cloud-map/amazon-cloud-map-jsonschema-spectral-rules/)
+- [Amazon Cloud Map API Rules](https://apis.io/rules/amazon-cloud-map/amazon-cloud-map-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Amazon Cloud Map Authentication](https://apis.io/security/amazon-cloud-map/amazon-cloud-map-authentication/)
+- [Amazon Cloud Map Domain Security](https://apis.io/security/amazon-cloud-map/amazon-cloud-map-domain-security/)
+- [Amazon Cloud Map Trust Center](https://apis.io/security/amazon-cloud-map/amazon-cloud-map-trust-center/)
+- [Amazon Cloud Map Vulnerability Disclosure](https://apis.io/security/amazon-cloud-map/amazon-cloud-map-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://aws.amazon.com/cloud-map/)
-- [SpectralRules](rules/amazon-cloud-map-spectral-rules.yml)
-- [Vocabulary](vocabulary/amazon-cloud-map-vocabulary.yaml)
-- [NaftikoCapability](capabilities/service-discovery.yaml)
+- [Documentation](https://docs.aws.amazon.com/cloud-map/)
+- [Sign up](https://signin.aws.amazon.com/signup?request_type=register)
+- [Support](https://aws.amazon.com/premiumsupport/)
+- [Blog](https://aws.amazon.com/blogs/compute/)
+- [Terms of service](https://aws.amazon.com/service-terms/)
+- [Privacy policy](https://aws.amazon.com/privacy/)
+- [GitHub](https://github.com/aws)
+- [Status](https://health.aws.amazon.com/health/status)
 
-## Features
+## API Evangelist rating
 
-| Name | Description |
-|------|-------------|
-| Service Registry | Maintain an up-to-date registry of application resources with custom naming. |
-| Health Monitoring | Continuously monitor health of every IP-based component and route only to healthy endpoints. |
-| Dynamic Discovery | Automatically update service registries as services scale up or down. |
-| Custom Names | Define custom names for application resources rather than hardcoding IP addresses. |
-| Multi-Environment Support | Maintain service registries across different deployment environments, regions, and application versions. |
+**Kin Score 45.3** — developing · rubric 0.25.0 · scored 2026-10-23
 
-## Use Cases
+| Facet | Score |
+|---|---|
+| Discoverability | 69.6 |
+| Contract quality | 28.9 |
+| Contract governance | 31.8 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 53.6 |
+| Access clarity | 52.6 |
 
-| Name | Description |
-|------|-------------|
-| Microservice Discovery | Enable services to locate dependencies in dynamic container environments with ECS and EKS. |
-| Health-Based Routing | Ensure traffic routes only to verified healthy service endpoints. |
-| CI/CD Integration | Automatically register and deregister services during CI/CD pipeline deployments. |
-| Multi-Region Service Mesh | Discover services across multiple AWS regions with a unified namespace. |
+**Agent readiness 29.6** — agent-ready
 
-## Integrations
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | — |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
 
-| Name | Description |
-|------|-------------|
-| Amazon ECS | Automatically register ECS task IPs in Cloud Map as containers launch. |
-| Amazon EKS | Integrate Kubernetes service discovery with Cloud Map for hybrid environments. |
-| Amazon Route 53 | DNS-based service discovery backed by Route 53 private hosted zones. |
-| AWS App Mesh | Use Cloud Map as the service registry for App Mesh virtual services. |
-| AWS IAM | Control access to Cloud Map namespaces with IAM policies. |
+**Regulatory alignment 35.3** — Horizontal (data, software, accessibility, platform)
 
-## Artifacts
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/amazon-cloud-map/](https://apis.io/providers/amazon-cloud-map/).
 
-### OpenAPI
+## How this profile is made
 
-- [Amazon Cloud Map API](openapi/amazon-cloud-map-openapi.yml)
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
 
-### JSON Schema
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Amazon Cloud Map: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
 
-- [Namespace](json-schema/cloud-map-namespace-schema.json)
-- [Service](json-schema/cloud-map-service-schema.json)
-- [Instance](json-schema/cloud-map-instance-schema.json)
-- [Http Instance Summary](json-schema/cloud-map-http-instance-summary-schema.json)
+## Open an issue
 
-### JSON-LD
-
-- [Amazon Cloud Map Context](json-ld/amazon-cloud-map-context.jsonld)
-
-## Capabilities
-
-### Shared Per-API Definitions
-
-- [Amazon Cloud Map](capabilities/shared/cloud-map.yaml) — 6 operations for service discovery management
-
-### Workflow Capabilities
-
-| Workflow | APIs Combined | Tools | Persona |
-|----------|--------------|-------|---------|
-| [Service Discovery](capabilities/service-discovery.yaml) | Cloud Map | 6 | Platform Engineer, DevOps Engineer |
-
-## Vocabulary
-
-- [Amazon Cloud Map Vocabulary](vocabulary/amazon-cloud-map-vocabulary.yaml) — Unified taxonomy mapping 3 resources, 4 actions, 1 workflow, and 2 personas
-
-## Rules
-
-- [Amazon Cloud Map Spectral Rules](rules/amazon-cloud-map-spectral-rules.yml) — 20 rules enforcing Amazon Cloud Map API conventions
-
-## Maintainers
-
-**FN:** Kin Lane
-
-**Email:** kin@apievangelist.com
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/amazon-cloud-map/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
